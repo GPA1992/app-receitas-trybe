@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import ContextRecipe from './ContextRecipe';
 
 function Provider({ children }) {
-  const [state, setState] = useState(INITIAL_STATE);
+  const INITIAL_STATE = [];
+  const [state, setState, test, setTest] = useState(INITIAL_STATE);
 
   const context = {
     state,

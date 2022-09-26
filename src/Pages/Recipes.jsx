@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import context from '../Context/ContextRecipe';
+import Footer from '../Components/Footer';
 
 export default function Recipes() {
   const { state,
@@ -18,6 +19,8 @@ export default function Recipes() {
         {state.nome}
       </p>
       <input type="text" onChange={ handleChange } />
+      Meals
+      <Footer />
     </div>
   );
 }
