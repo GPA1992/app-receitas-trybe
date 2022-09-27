@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import context from '../context/ContextRecipe';
+import context from '../Context/ContextRecipe';
 import fetchMeals from '../services/fetchMeals';
 
 function MealCategories() {

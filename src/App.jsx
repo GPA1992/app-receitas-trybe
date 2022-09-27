@@ -2,15 +2,15 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from './pages/Login';
-import Provider from './context/ProviderRecipe';
-import Drinks from './pages/Drinks';
-import Meals from './pages/Meals';
-import DoneRecipes from './pages/DoneRecipes';
-import Profile from './pages/Profile';
-import FavoriteRecipes from './pages/FavoriteRecipes';
-import RecipeInProgress from './pages/RecipeInProgress';
-import RecipeDetails from './pages/RecipeDetails';
+import Login from './Pages/Login';
+import Provider from './Context/ProviderRecipe';
+import Drinks from './Pages/Drinks';
+import Meals from './Pages/Meals';
+import DoneRecipes from './Pages/DoneRecipes';
+import Profile from './Pages/Profile';
+import FavoriteRecipes from './Pages/FavoriteRecipes';
+import RecipeInProgress from './Pages/RecipeInProgress';
+import RecipeDetails from './Pages/RecipeDetails';
 
 function App() {
   return (

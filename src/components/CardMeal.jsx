@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import context from '../context/ContextRecipe';
+import context from '../Context/ContextRecipe';
 
 function CardMeal() {
   const history = useHistory();

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import context from '../context/ContextRecipe';
+import context from '../Context/ContextRecipe';
 
 export default function Login() {
   const { setTitle } = useContext(context);
