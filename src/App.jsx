@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './Pages/Login';
 import Provider from './Context/ProviderRecipe';
 import Drinks from './Pages/Drinks';
-import Meals from './Pages/Meals';
+import Meals from './pages/Meals';
 import DoneRecipes from './Pages/DoneRecipes';
 import Profile from './Pages/Profile';
 import FavoriteRecipes from './Pages/FavoriteRecipes';

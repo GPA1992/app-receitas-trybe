@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import context from '../Context/ContextRecipe';
-import Recipes from '../Components/Recipes';
+import Recipes from '../components/Recipes';
 import fetchMealsCategories from '../services/fetchMealsCategories';
 
 export default function Meals() {
