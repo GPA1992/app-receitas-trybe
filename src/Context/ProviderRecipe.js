@@ -1,20 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ContextRecipe from './ContextRecipe';
+import useContextHook from '../hooks/useContextHook';
 
 function Provider({ children }) {
-  const INITIAL_STATE = [];
-  const [state, setState, test, setTest] = useState(INITIAL_STATE);
+  const {
+    title,
+    setTitle,
+    mealsCategories,
+    setMealsCategories,
+    drinksCategories,
+    setDrinksCategories,
+    dataMeals,
+    setDataMeals,
+    dataDrinks,
+    setDataDrinks,
+    selectedMeal,
+    setSelectedMeal,
+    selectedDrink,
+    setSelectedDrink,
+  } = useContextHook();
 
-  const context = {
-    state,
-    setState,
-    test,
-    setTest,
+  const value = {
+    title,
+    setTitle,
+    mealsCategories,
+    setMealsCategories,
+    drinksCategories,
+    setDrinksCategories,
+    dataMeals,
+    setDataMeals,
+    dataDrinks,
+    setDataDrinks,
+    selectedMeal,
+    setSelectedMeal,
+    selectedDrink,
+    setSelectedDrink,
   };
 
   return (
-    <ContextRecipe.Provider value={ context }>
+    <ContextRecipe.Provider value={ value }>
       {children}
     </ContextRecipe.Provider>
   );

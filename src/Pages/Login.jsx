@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import context from '../Context/ContextRecipe';
 
 export default function Login() {
+  const { setTitle } = useContext(context);
+
+  useEffect(() => { setTitle('Login'); });
+
   const history = useHistory();
   const [loginInfo, setLoginInfo] = useState({
     email: '',
