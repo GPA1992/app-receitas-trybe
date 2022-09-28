@@ -15,11 +15,13 @@ export default function Drinks() {
     getDrinksCategories();
     setTitle('Drinks');
   }, []);
+  // f
 
   return (
     <div>
       { title === 'Drinks' && <Recipes /> }
       <Footer />
+
     </div>
   );
 }

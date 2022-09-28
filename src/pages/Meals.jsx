@@ -15,6 +15,7 @@ export default function Meals() {
     getMealsCategories();
     setTitle('Meals');
   }, []);
+  // f
 
   return (
     <div>
