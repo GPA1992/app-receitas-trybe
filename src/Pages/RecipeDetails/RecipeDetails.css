@@ -1,0 +1,39 @@
+.main-description {
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-description button {
+  background-color: red;
+  border: none;
+  border-radius: 30px;
+  bottom: 0;
+  padding: 10px;
+  position: fixed;
+}
+
+.start-recipe-btn {
+  position: absolute;
+  width: 1000px;
+  z-index: 1;
+}
+
+.recommendation-card {
+  height: 30px;
+  margin: 0 20px;
+  width: 200px;
+}
+
+.recommendation-card img {
+  height: 134.85px;
+  left: 12px;
+  top: 898px;
+  width: 163.35px;
+}
+
+.section-recomendation {
+  display: flex;
+  height: 250px;
+  overflow-x: scroll;
+  width: 100vw;
+}
