@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import context from '../contexts/ContextRecipe';
 
 export default function Login() {
-  // Adiciona nossa versão
   const { setTitle } = useContext(context);
 
   useEffect(() => { setTitle('Login'); });
@@ -47,6 +46,7 @@ export default function Login() {
         <input
           name="email"
           data-testid="email-input"
+          placeholder="exemplo@exemplo.com"
           type="email"
           onChange={ handleChange }
         />
@@ -58,6 +58,7 @@ export default function Login() {
           onChange={ handleChange }
           name="password"
           data-testid="password-input"
+          placeholder="senha"
           type="password"
         />
       </label>

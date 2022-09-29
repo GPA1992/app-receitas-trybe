@@ -5,13 +5,13 @@ import context from '../contexts/ContextRecipe';
 import Header from '../component/Header';
 
 export default function Profile() {
-  const { setPageTitle, setShowHeaderButtons } = useContext(context);
+  const { setTitle, setShowHeaderButtons } = useContext(context);
   useEffect(() => {
     setShowHeaderButtons({
       profile: true,
       search: false,
     });
-    setPageTitle('Profile');
+    setTitle('Profile');
   }, []);
   const history = useHistory();
   const { email } = (localStorage.getItem('user'))

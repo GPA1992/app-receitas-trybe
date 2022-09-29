@@ -3,14 +3,14 @@ import context from '../contexts/ContextRecipe';
 import Header from '../component/Header';
 
 function FavoriteRecipes() {
-  const { setPageTitle, setShowHeaderButtons } = useContext(context);
+  const { setTitle, setShowHeaderButtons } = useContext(context);
 
   useEffect(() => {
     setShowHeaderButtons({
       profile: true,
       search: false,
     });
-    setPageTitle('Favorite Recipes');
+    setTitle('Favorite Recipes');
   }, []);
 
   return (
