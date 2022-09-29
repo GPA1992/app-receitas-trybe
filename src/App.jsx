@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from './Pages/Login';
+import Login from './Pages/Login/Login';
 import Provider from './Context/ProviderRecipe';
 import Drinks from './Pages/Drinks';
 import Meals from './pages/Meals';
@@ -10,7 +11,7 @@ import DoneRecipes from './Pages/DoneRecipes';
 import Profile from './Pages/Profile';
 import FavoriteRecipes from './Pages/FavoriteRecipes';
 import RecipeInProgress from './Pages/RecipeInProgress';
-import RecipeDetails from './Pages/RecipeDetails';
+import RecipeDetails from './Pages/RecipeDetails/RecipeDetails';
 
 function App() {
   return (

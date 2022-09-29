@@ -4,22 +4,30 @@ import Recipes from '../components/Recipes';
 import fetchMealsCategories from '../services/fetchMealsCategories';
 import Footer from '../Components/Footer';
 import './Meals.css';
+import Header from '../Components/Header';
 
 export default function Meals() {
-  const { title, setTitle, setMealsCategories } = useContext(context);
+  const { title, setTitle, mealsCategories, setMealsCategories } = useContext(context);
 
   useEffect(() => {
+    console.log('Title before rendering: ', title);
     async function getMealsCategories() {
       const data = await fetchMealsCategories();
       setMealsCategories(data.meals);
     }
-    getMealsCategories();
+    console.log('Fetch return: ', mealsCategories);
     setTitle('Meals');
+    console.log('Title after rendering: ', title);
+    getMealsCategories();
   }, []);
-  // f
 
   return (
     <div className="meals-css">
+
+    <div>
+      <Header />
+      <h2>Página principal de receitas</h2>
+
       { title === 'Meals' && <Recipes /> }
       <Footer />
     </div>
