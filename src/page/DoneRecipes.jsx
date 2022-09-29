@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import context from '../context/ContextRecipe';
-import Header from '../components/Header';
+import context from '../contexts/ContextRecipe';
+import Header from '../component/Header';
 
 function DoneRecipes() {
   const { setPageTitle, setShowHeaderButtons } = useContext(context);
