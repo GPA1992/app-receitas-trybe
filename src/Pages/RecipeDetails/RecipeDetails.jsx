@@ -134,11 +134,9 @@ function RecipeDetails(props) {
           </div>
         ))}
       </section>
-      {/* <div className="start-recipe-btn"> */}
       <button type="button" data-testid="start-recipe-btn">
         Start Recipe
       </button>
-      {/* </div> */}
     </main>
   );
 }
