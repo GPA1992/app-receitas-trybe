@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import context from '../context/ContextRecipe';
+import context from '../contexts/ContextRecipe';
 import SearchBar from './SearchBar';
 
 export default function Header() {

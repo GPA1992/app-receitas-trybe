@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import context from '../context/ContextRecipe';
+import context from '../contexts/ContextRecipe';
 
 export default function SearchBar() {
   const { setRecipeList, searchType,

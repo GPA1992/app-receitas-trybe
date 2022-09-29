@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import context from '../context/ContextRecipe';
+import context from '../contexts/ContextRecipe';
 import CardDrink from './CardDrink';
 import CardMeal from './CardMeal';
 import DrinkCategories from './DrinkCategories';

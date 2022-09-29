@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import Footer from '../components/Footer';
-import context from '../context/ContextRecipe';
-import Header from '../components/Header';
+import Footer from '../component/Footer';
+import context from '../contexts/ContextRecipe';
+import Header from '../component/Header';
 
 export default function Profile() {
   const { setPageTitle, setShowHeaderButtons } = useContext(context);

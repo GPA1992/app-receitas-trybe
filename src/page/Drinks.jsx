@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react';
-import context from '../Context/ContextRecipe';
-import Recipes from '../components/Recipes';
+import context from '../contexts/ContextRecipe';
+import Recipes from '../component/Recipes';
 import fetchDrinksCategories from '../services/fetchDrinksCategories';
-import Footer from '../Components/Footer';
-import Header from '../Components/Header';
+import Footer from '../component/Footer';
+import Header from '../component/Header';
 
 export default function Drinks() {
   const { title, setTitle, setDrinksCategories } = useContext(context);

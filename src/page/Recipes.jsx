@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import context from '../context/ContextRecipe';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import context from '../contexts/ContextRecipe';
+import Footer from '../component/Footer';
+import Header from '../component/Header';
 
 export default function Recipes() {
   const { state, setPageTitle, setShowHeaderButtons } = useContext(context);
