@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 
 export default function Header() {
   const history = useHistory();
-  const { pageTitle, showHeaderButtons,
+  const { title, showHeaderButtons,
     setShowHeaderButtons, setSearchitem } = useContext(context);
   const { profile, search, inputSearch } = showHeaderButtons;
 
@@ -24,8 +24,8 @@ export default function Header() {
   };
 
   return (
-    <div>
-      <h3 data-testid="page-title">{ pageTitle }</h3>
+    <div data-testid="header">
+      <h3 data-testid="page-title">{ title }</h3>
       { profile && (
         <button
           onClick={ () => history.push('/profile') }
