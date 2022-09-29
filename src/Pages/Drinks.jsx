@@ -3,6 +3,7 @@ import context from '../Context/ContextRecipe';
 import Recipes from '../components/Recipes';
 import fetchDrinksCategories from '../services/fetchDrinksCategories';
 import Footer from '../Components/Footer';
+import './Drinks.css';
 
 export default function Drinks() {
   const { title, setTitle, setDrinksCategories } = useContext(context);
@@ -18,7 +19,7 @@ export default function Drinks() {
   // f
 
   return (
-    <div>
+    <div className="drinks-css">
       { title === 'Drinks' && <Recipes /> }
       <Footer />
 
