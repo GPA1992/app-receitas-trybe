@@ -7,7 +7,7 @@ import renderWithRouter from './utils/renderWithRouter';
 // Não foi necessário colocar o valor de placeholder e dos userType,
 // pois cada valor foi só usado uma única vez, assim não disparou
 // Nenhum aviso no lint
-describe('O componente footer deve ', () => {
+describe('O componente header deve ', () => {
   it('ser encontrado na rota /meals', () => {
     renderWithRouter(<App />);
     const emailInput = screen.getByPlaceholderText('exemplo@exemplo.com');
@@ -17,12 +17,7 @@ describe('O componente footer deve ', () => {
     userEvent.type(passwordInput, '1234567');
     userEvent.click(button);
 
-    const footer = screen.getByTestId('footer');
-    expect(footer).toBeInTheDocument();
-
-    const drinksBtn = screen.getByTestId('drinks-btn');
-    const mealsBtn = screen.getByTestId('meals-btn');
-    expect(drinksBtn).toBeInTheDocument();
-    expect(mealsBtn).toBeInTheDocument();
+    const header = screen.getByTestId('header');
+    expect(header).toBeInTheDocument();
   });
 });
