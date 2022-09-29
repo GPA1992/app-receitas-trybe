@@ -47,6 +47,7 @@ export default function Login() {
           name="email"
           data-testid="email-input"
           type="email"
+          placeholder="exemplo@exemplo.com"
           onChange={ handleChange }
         />
       </label>
@@ -58,6 +59,7 @@ export default function Login() {
           name="password"
           data-testid="password-input"
           type="password"
+          placeholder="senha"
         />
       </label>
       <br />
