@@ -1,5 +1,7 @@
 .footer {
   bottom: 0;
+  left: 40%;
   margin-bottom: 0;
   position: fixed;
+  right: 40%;
 }

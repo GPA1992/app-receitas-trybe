@@ -1,0 +1,11 @@
+.meals-css {
+  align-content: center;
+  align-items: center;
+  background-color: rgb(148, 104, 104);
+  color: white;
+  text-align: center;
+}
+
+.meals-css img {
+  max-width: 200px;
+}

@@ -3,6 +3,7 @@ import context from '../Context/ContextRecipe';
 import Recipes from '../components/Recipes';
 import fetchMealsCategories from '../services/fetchMealsCategories';
 import Footer from '../Components/Footer';
+import './Meals.css';
 import Header from '../Components/Header';
 
 export default function Meals() {
@@ -21,9 +22,12 @@ export default function Meals() {
   }, []);
 
   return (
+    <div className="meals-css">
+
     <div>
       <Header />
       <h2>Página principal de receitas</h2>
+
       { title === 'Meals' && <Recipes /> }
       <Footer />
     </div>
