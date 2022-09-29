@@ -1,6 +1,13 @@
 import { useState } from 'react';
 
 const useContextHook = () => {
+  const [showHeaderButtons, setShowHeaderButtons] = useState({
+    profile: true,
+    search: true,
+    inputSearch: false,
+  });
+  const [searchType, setSearchType] = useState('');
+  const [searchItem, setSearchItem] = useState('');
   const [title, setTitle] = useState('');
   const [mealsCategories, setMealsCategories] = useState([]);
   const [drinksCategories, setDrinksCategories] = useState([]);
@@ -9,7 +16,14 @@ const useContextHook = () => {
   const [dataMeals, setDataMeals] = useState([]);
   const [dataDrinks, setDataDrinks] = useState([]);
 
-  return { title,
+  return {
+    searchItem,
+    setSearchItem,
+    searchType,
+    setSearchType,
+    showHeaderButtons,
+    setShowHeaderButtons,
+    title,
     setTitle,
     mealsCategories,
     setMealsCategories,
@@ -22,7 +36,8 @@ const useContextHook = () => {
     selectedMeal,
     setSelectedMeal,
     selectedDrink,
-    setSelectedDrink };
+    setSelectedDrink,
+  };
 };
 
 export default useContextHook;

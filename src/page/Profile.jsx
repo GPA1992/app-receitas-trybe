@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import Footer from '../Components/Footer';
+import Footer from '../component/Footer';
+import context from '../contexts/ContextRecipe';
+import Header from '../component/Header';
 
 export default function Profile() {
+  const { setPageTitle, setShowHeaderButtons } = useContext(context);
+  useEffect(() => {
+    setShowHeaderButtons({
+      profile: true,
+      search: false,
+    });
+    setPageTitle('Profile');
+  }, []);
   const history = useHistory();
   const { email } = (localStorage.getItem('user'))
     ? JSON.parse(localStorage.getItem('user')) : '';
@@ -13,7 +23,7 @@ export default function Profile() {
 
   return (
     <main>
-
+      <Header />
       <section>
         <button
           data-testid="profile-done-btn"

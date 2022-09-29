@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import context from '../Context/ContextRecipe';
-import fetchDrinks from '../services/fetchDrinks';
+import context from '../contexts/ContextRecipe';
+import fetchDrinks from '../service/fetchDrinks';
 
 function DrinkCategories() {
   const { drinksCategories, setDataDrinks } = useContext(context);

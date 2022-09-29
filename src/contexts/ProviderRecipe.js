@@ -5,6 +5,12 @@ import useContextHook from '../hooks/useContextHook';
 
 function Provider({ children }) {
   const {
+    searchItem,
+    setSearchItem,
+    searchType,
+    setSearchType,
+    showHeaderButtons,
+    setShowHeaderButtons,
     title,
     setTitle,
     mealsCategories,
@@ -22,6 +28,12 @@ function Provider({ children }) {
   } = useContextHook();
 
   const value = {
+    searchItem,
+    setSearchItem,
+    searchType,
+    setSearchType,
+    showHeaderButtons,
+    setShowHeaderButtons,
     title,
     setTitle,
     mealsCategories,

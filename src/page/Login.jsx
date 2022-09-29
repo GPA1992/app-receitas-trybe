@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import context from '../../Context/ContextRecipe';
+import context from '../contexts/ContextRecipe';
 
 export default function Login() {
+  // Adiciona nossa versão
   const { setTitle } = useContext(context);
 
   useEffect(() => { setTitle('Login'); });
@@ -47,7 +48,6 @@ export default function Login() {
           name="email"
           data-testid="email-input"
           type="email"
-          placeholder="exemplo@exemplo.com"
           onChange={ handleChange }
         />
       </label>
@@ -59,7 +59,6 @@ export default function Login() {
           name="password"
           data-testid="password-input"
           type="password"
-          placeholder="senha"
         />
       </label>
       <br />

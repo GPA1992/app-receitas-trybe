@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
-import requestFetchApi from '../../Services/RequestFetchApi';
+import requestFetchApi from '../service/RequestFetchApi';
 import './RecipeDetails.css';
-import { getFromLocalStorage } from '../../Services/localStorage';
+import { getFromLocalStorage } from '../service/localStorage';
 
 const MAX_RECOMMENDATIONS = 6;
 
