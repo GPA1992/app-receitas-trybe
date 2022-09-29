@@ -4,8 +4,8 @@ import CardDrink from './CardDrink';
 import CardMeal from './CardMeal';
 import DrinkCategories from './DrinkCategories';
 import MealCategories from './MealCategories';
-import fetchDrinks from '../services/fetchDrinks';
-import fetchMeals from '../services/fetchMeals';
+import fetchDrinks from '../service/fetchDrinks';
+import fetchMeals from '../service/fetchMeals';
 
 export default function Recipes() {
   const { title, setDataMeals, setDataDrinks } = useContext(context);
