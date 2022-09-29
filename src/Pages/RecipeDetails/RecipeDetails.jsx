@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import requestFetchApi from '../../Services/RequestFetchApi';
 import './RecipeDetails.css';
+import { getFromLocalStorage } from '../../Services/localStorage';
 
 const MAX_RECOMMENDATIONS = 6;
 
@@ -13,6 +14,7 @@ function RecipeDetails(props) {
     allRecommendations: [],
     selectedRecommendations: [],
   });
+  const [recipeIsDone, setRecipeIsDone] = useState(false);
 
   const { pathname } = useLocation();
 
@@ -48,7 +50,6 @@ function RecipeDetails(props) {
     if (allRecommendations.length > 0) {
       const randomRecomendations = [];
       for (let index = 0; index < MAX_RECOMMENDATIONS; index += 1) {
-        // const random = Math.floor(Math.random() * allRecommendations.length);
         randomRecomendations.push(allRecommendations[index]);
       }
       setRecommendations({
@@ -57,6 +58,17 @@ function RecipeDetails(props) {
       });
     }
   }, [recommendations.allRecommendations]);
+
+  useEffect(() => {
+    const doneRecipes = getFromLocalStorage('doneRecipes');
+    const { match: { params: { id } } } = props;
+    if (doneRecipes !== null) {
+      const isDone = doneRecipes.some(
+        (recipe) => recipe.id === id,
+      );
+      setRecipeIsDone(isDone);
+    }
+  }, []);
 
   const ingredientsKeys = Object.keys(recipeDetails).filter(
     (key) => key.includes('strIngredient'),
@@ -134,9 +146,11 @@ function RecipeDetails(props) {
           </div>
         ))}
       </section>
-      <button type="button" data-testid="start-recipe-btn">
-        Start Recipe
-      </button>
+      { !recipeIsDone && (
+        <button type="button" data-testid="start-recipe-btn">
+          Start Recipe
+        </button>
+      )}
     </main>
   );
 }

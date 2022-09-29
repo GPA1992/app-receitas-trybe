@@ -4,10 +4,11 @@
 }
 
 .main-description button {
-  background-color: red;
+  background-color: green;
   border: none;
   border-radius: 30px;
   bottom: 0;
+  color: white;
   padding: 10px;
   position: fixed;
 }

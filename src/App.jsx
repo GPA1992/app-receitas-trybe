@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from './Pages/Login';
+import Login from './Pages/Login/Login';
 import Provider from './Context/ProviderRecipe';
 import Drinks from './Pages/Drinks';
 import Meals from './pages/Meals';
