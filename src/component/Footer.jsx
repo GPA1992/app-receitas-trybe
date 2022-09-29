@@ -12,7 +12,6 @@ export default function Footer() {
         <button
           type="button"
           onClick={ () => history.push('/drinks') }
-          data-testid="drinks-btn"
         >
           <img
             src={ drinkIcon }
@@ -24,7 +23,6 @@ export default function Footer() {
         <button
           type="button"
           onClick={ () => history.push('/meals') }
-          data-testid="meals-btn"
         >
           <img
             src={ mealIcon }

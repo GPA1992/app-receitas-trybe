@@ -1,27 +1,27 @@
 import React, { useContext, useState } from 'react';
-import context from '../Context/ContextRecipe';
-import fetchDrinks from '../services/fetchDrinks';
+import context from '../context/ContextRecipe';
+import fetchMeals from '../services/fetchMeals';
 
-function DrinkCategories() {
-  const { drinksCategories, setDataDrinks } = useContext(context);
+function MealCategories() {
+  const { mealsCategories, setDataMeals } = useContext(context);
   const [currentCategory, setCurrentCategory] = useState('');
   const renderLimit = 5;
 
   const handleCategory = async ({ target }) => {
     if (currentCategory === target.value) {
-      const filterCategory = await fetchDrinks('name', '');
-      setDataDrinks(filterCategory.drinks);
+      const filterCategory = await fetchMeals('name', '');
+      setDataMeals(filterCategory.meals);
       setCurrentCategory('');
     } else {
-      const filterCategory = await fetchDrinks('category', target.value);
-      setDataDrinks(filterCategory.drinks);
+      const filterCategory = await fetchMeals('category', target.value);
+      setDataMeals(filterCategory.meals);
       setCurrentCategory(target.value);
     }
   };
 
   const handleFilters = async () => {
-    const allFilter = await fetchDrinks('name', '');
-    setDataDrinks(allFilter.drinks);
+    const allFilter = await fetchMeals('name', '');
+    setDataMeals(allFilter.meals);
   };
 
   return (
@@ -33,7 +33,7 @@ function DrinkCategories() {
       >
         All
       </button>
-      { drinksCategories && drinksCategories.map((category, i) => (
+      { mealsCategories && mealsCategories.map((category, i) => (
         i < renderLimit && (
           <button
             value={ category.strCategory }
@@ -50,4 +50,4 @@ function DrinkCategories() {
   );
 }
 
-export default DrinkCategories;
+export default MealCategories;

@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 
-import renderWithRouter from '../Services/renderWithRouter';
+import renderWithRouter from './utils/renderWithRouter';
 import App from '../App';
 import oneMeal from '../../cypress/mocks/oneMeal';
 
