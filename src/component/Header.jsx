@@ -4,6 +4,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import context from '../contexts/ContextRecipe';
 import SearchBar from './SearchBar';
+import './Header.css';
 
 export default function Header() {
   const history = useHistory();
@@ -24,34 +25,42 @@ export default function Header() {
   };
 
   return (
-    <div>
-      <h3 data-testid="page-title">{ pageTitle }</h3>
-      { profile && (
-        <button
-          onClick={ () => history.push('/profile') }
-          type="button"
-          src={ profileIcon }
-        >
-          <img data-testid="profile-top-btn" src={ profileIcon } alt="profile-icon" />
-        </button>
-      )}
-      { search && (
-        <button
-          onClick={ viewInputSearch }
-          type="button"
-          src={ searchIcon }
-        >
-          <img data-testid="search-top-btn" src={ searchIcon } alt="profile-icon" />
-        </button>
-      )}
+    <header className="header-css">
+      <div className="header-title">
+        { profile && (
+          <button
+            onClick={ () => history.push('/profile') }
+            type="button"
+            src={ profileIcon }
+          >
+            <img data-testid="profile-top-btn" src={ profileIcon } alt="profile-icon" />
+          </button>
+        )}
+        <h3 data-testid="page-title">
+          { pageTitle }
+          RECIPES app
+        </h3>
+        { search && (
+          <button
+            onClick={ viewInputSearch }
+            type="button"
+            src={ searchIcon }
+          >
+            <img data-testid="search-top-btn" src={ searchIcon } alt="profile-icon" />
+          </button>
+        )}
+      </div>
       {inputSearch && (
-        <input
-          onChange={ searchItemCapture }
-          type="text"
-          data-testid="search-input"
-        />
+        <div className="all-search-header">
+          <input
+            onChange={ searchItemCapture }
+            type="text"
+            data-testid="search-input"
+          />
+          <SearchBar />
+        </div>
       )}
-      <SearchBar />
-    </div>
+
+    </header>
   );
 }

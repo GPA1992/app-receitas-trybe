@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import context from '../contexts/ContextRecipe';
 import fetchDrinks from '../service/fetchDrinks';
+import './Categories.css';
 
 function DrinkCategories() {
   const { drinksCategories, setDataDrinks } = useContext(context);
@@ -25,7 +26,7 @@ function DrinkCategories() {
   };
 
   return (
-    <div className="category-area">
+    <section className="category-area">
       <button
         type="button"
         data-testid="All-category-filter"
@@ -46,7 +47,7 @@ function DrinkCategories() {
           </button>
         )
       )) }
-    </div>
+    </section>
   );
 }
 

@@ -18,7 +18,7 @@ export default function Meals() {
   // f
 
   return (
-    <div>
+    <div className="meals-css">
       { title === 'Meals' && <Recipes /> }
       <Footer />
     </div>

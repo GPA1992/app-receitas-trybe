@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import context from '../contexts/ContextRecipe';
+import './Login.css';
 
 export default function Login() {
   // Adiciona nossa versão
@@ -41,36 +42,40 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <label htmlFor="email-input">
-        <p>E-mail</p>
-        <input
-          name="email"
-          data-testid="email-input"
-          type="email"
-          onChange={ handleChange }
-        />
-      </label>
-      <br />
-      <label htmlFor="password">
-        <p>Senha</p>
-        <input
-          onChange={ handleChange }
-          name="password"
-          data-testid="password-input"
-          type="password"
-        />
-      </label>
-      <br />
-      <br />
-      <button
-        disabled={ buttonDisable }
-        data-testid="login-submit-btn"
-        type="button"
-        onClick={ handleClick }
-      >
-        Submit
-      </button>
+
+    <div
+      className="content-login"
+    >
+      <form className="form-login">
+        <h2>Título do App</h2>
+        <label htmlFor="email-input">
+          <input
+            name="email"
+            data-testid="email-input"
+            type="email"
+            onChange={ handleChange }
+            placeholder="E-mail"
+          />
+        </label>
+        <br />
+        <label htmlFor="password">
+          <input
+            onChange={ handleChange }
+            name="password"
+            data-testid="password-input"
+            type="password"
+            placeholder="Senha"
+          />
+        </label>
+        <button
+          disabled={ buttonDisable }
+          data-testid="login-submit-btn"
+          type="button"
+          onClick={ handleClick }
+        >
+          Login
+        </button>
+      </form>
     </div>
   );
 }
