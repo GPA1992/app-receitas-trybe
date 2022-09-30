@@ -8,7 +8,7 @@ import SearchBar from './SearchBar';
 export default function Header() {
   const history = useHistory();
   const { title, showHeaderButtons,
-    setShowHeaderButtons, setSearchitem } = useContext(context);
+    setShowHeaderButtons, setSearchItem } = useContext(context);
   const { profile, search, inputSearch } = showHeaderButtons;
 
   const viewInputSearch = () => {
@@ -20,7 +20,7 @@ export default function Header() {
 
   const searchItemCapture = ({ target }) => {
     const { value } = target;
-    setSearchitem(value);
+    setSearchItem(value);
   };
 
   return (

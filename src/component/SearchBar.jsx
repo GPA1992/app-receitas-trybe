@@ -1,46 +1,60 @@
 import React, { useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import context from '../contexts/ContextRecipe';
+import fetchMeals from '../service/fetchMeals';
+import fetchDrinks from '../service/fetchDrinks';
 
 export default function SearchBar() {
-  const { setRecipeList, searchType,
-    setSearchType, searchItem, recipeList } = useContext(context);
+  const history = useHistory();
+  const { searchType, setDataDrinks,
+    setSearchType, searchItem, title, setDataMeals } = useContext(context);
 
   useEffect(() => {}, []);
-
-  const fetchRecipe = async (url) => {
-    const { meals } = await fetch(url).then((response) => response.json());
-    setRecipeList(meals);
-  };
-
-  const searchRecipe = async () => {
-    const weNeedAlert = searchType === 'first-letter' && searchItem.length >= 2;
-
-    if (weNeedAlert === true) {
-      return global.alert('Your search must have only 1 (one) character');
-    }
-    switch (searchType) {
-    case 'ingredient': {
-      await fetchRecipe(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchItem}`);
-      break;
-    }
-    case 'name': {
-      await fetchRecipe(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchItem}`);
-      break;
-    }
-    case 'first-letter': {
-      await fetchRecipe(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchItem}`);
-      break;
-    }
-    default:
-      break;
-    }
-    console.log(recipeList);
-  };
 
   const onClickSearchType = ({ target }) => {
     const { value } = target;
     setSearchType(value);
-    console.log();
+  };
+
+  const checkIfOneRecipe = (array, id) => {
+    if (array.length === 1) {
+      history.push(`${title.toLowerCase()}/${id}`);
+    }
+  };
+
+  const mealsHandle = async () => {
+    const dataMealsTwo = await fetchMeals(searchType, searchItem.toLowerCase());
+    const sorry = 'Sorry';
+    if (dataMealsTwo.meals === null || dataMealsTwo.meals === undefined) {
+      return global.alert(`${sorry}, we haven't found any recipes for these filters.`);
+    }
+    console.log(dataMealsTwo.meals.length);
+    checkIfOneRecipe(dataMealsTwo.meals, dataMealsTwo.meals[0].idMeal);
+    setDataMeals(dataMealsTwo.meals);
+  };
+
+  const drinkHandle = async () => {
+    const dataDrinkTwo = await fetchDrinks(searchType, searchItem.toLowerCase());
+    const sorry = 'Sorry';
+    if (dataDrinkTwo.drinks === null || dataDrinkTwo.drinks === undefined) {
+      return global.alert(`${sorry}, we haven't found any recipes for these filters.`);
+    }
+    setDataDrinks(dataDrinkTwo.drinks);
+    checkIfOneRecipe(dataDrinkTwo.drinks, dataDrinkTwo.drinks[0].idDrink);
+  };
+
+  const searchRecipe = () => {
+    const ifFirstLetter = searchType === 'first-letter' && searchItem.length >= 2;
+
+    if (ifFirstLetter === true) {
+      return global.alert('Your search must have only 1 (one) character');
+    }
+    if (title === 'Meals') {
+      return mealsHandle();
+    }
+    if (title === 'Drinks') {
+      return drinkHandle();
+    }
   };
 
   return (

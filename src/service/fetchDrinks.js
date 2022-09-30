@@ -8,6 +8,14 @@ async function fetchDrinks(type, query) {
       const getByCategory = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${query}`);
       const dataCategory = await getByCategory.json();
       return dataCategory;
+    } if (type === 'ingredient') {
+      const getByCategory = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${query}`);
+      const dataCategory = await getByCategory.json();
+      return dataCategory;
+    } if (type === 'first-letter') {
+      const getByCategory = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${query}`);
+      const dataCategory = await getByCategory.json();
+      return dataCategory;
     }
   } catch (error) {
     console.log(error);

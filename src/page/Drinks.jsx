@@ -6,9 +6,14 @@ import Footer from '../component/Footer';
 import Header from '../component/Header';
 
 export default function Drinks() {
-  const { title, setTitle, setDrinksCategories } = useContext(context);
+  const { setShowHeaderButtons, title,
+    setTitle, setDrinksCategories } = useContext(context);
 
   useEffect(() => {
+    setShowHeaderButtons({
+      profile: true,
+      search: true,
+    });
     async function getDrinksCategories() {
       const data = await fetchDrinksCategories();
       setDrinksCategories(data.drinks);
