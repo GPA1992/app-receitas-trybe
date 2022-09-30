@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import context from '../contexts/ContextRecipe';
 import fetchMeals from '../service/fetchMeals';
+import './Categories.css';
 
 function MealCategories() {
   const { mealsCategories, setDataMeals } = useContext(context);

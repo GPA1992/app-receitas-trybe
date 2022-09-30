@@ -56,9 +56,9 @@ export default function SearchBar() {
   };
 
   return (
-    <div>
+    <div className="search-header">
       <label htmlFor="ingredient-search-radio">
-        Ingredientes
+        Ingredients
         <input
           value="ingredient"
           onClick={ onClickSearchType }
@@ -67,7 +67,6 @@ export default function SearchBar() {
           type="radio"
         />
       </label>
-      <br />
       <label htmlFor="name-search-radio">
         Name
         <input
@@ -78,9 +77,8 @@ export default function SearchBar() {
           type="radio"
         />
       </label>
-      <br />
       <label htmlFor="first-letter-search-radio">
-        Primeira Letra
+        First letter
         <input
           value="first-letter"
           onClick={ onClickSearchType }
@@ -89,13 +87,12 @@ export default function SearchBar() {
           type="radio"
         />
       </label>
-      <br />
       <button
         onClick={ searchRecipe }
         type="button"
         data-testid="exec-search-btn"
       >
-        exercutar busca
+        Search
       </button>
     </div>
   );

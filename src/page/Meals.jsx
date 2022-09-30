@@ -26,6 +26,7 @@ export default function Meals() {
   // f
 
   return (
+
     <div>
       <Header />
       { title === 'Meals' && <Recipes /> }

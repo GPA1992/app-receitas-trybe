@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import context from '../contexts/ContextRecipe';
+import './CardMealAndDrink.css';
 
 function CardMeal() {
   const history = useHistory();
@@ -8,10 +9,11 @@ function CardMeal() {
   const renderLimit = 12;
 
   return (
-    <div>
+    <div className="card-drink-meal-css ">
       {dataMeals && dataMeals.map((meal, i) => (
         i < renderLimit && (
           <div
+            className="only-card-drink-meal"
             key={ meal.idMeal }
             data-testid={ `${i}-recipe-card` }
             role="button"

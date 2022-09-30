@@ -24,7 +24,7 @@ export default function Drinks() {
   // f
 
   return (
-    <div>
+    <div className="drinks-css">
       <Header />
       { title === 'Drinks' && <Recipes /> }
       <Footer />
