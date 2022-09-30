@@ -16,31 +16,28 @@ export default function SearchBar() {
     setSearchType(value);
   };
 
-  const checkIfOneRecipe = (array, id) => {
-    if (array.length === 1) {
-      history.push(`${title.toLowerCase()}/${id}`);
-    }
-  };
-
   const mealsHandle = async () => {
-    const dataMealsTwo = await fetchMeals(searchType, searchItem.toLowerCase());
+    const mealsFetch = await fetchMeals(searchType, searchItem.toLowerCase());
     const sorry = 'Sorry';
-    if (dataMealsTwo.meals === null || dataMealsTwo.meals === undefined) {
+    if (mealsFetch.meals === null) {
       return global.alert(`${sorry}, we haven't found any recipes for these filters.`);
     }
-    console.log(dataMealsTwo.meals.length);
-    checkIfOneRecipe(dataMealsTwo.meals, dataMealsTwo.meals[0].idMeal);
-    setDataMeals(dataMealsTwo.meals);
+    if (mealsFetch.meals.length === 1) {
+      history.push(`${title.toLowerCase()}/${mealsFetch.meals[0].idMeal}`);
+    }
+    setDataMeals(mealsFetch.meals);
   };
 
   const drinkHandle = async () => {
-    const dataDrinkTwo = await fetchDrinks(searchType, searchItem.toLowerCase());
+    const drinksFetch = await fetchDrinks(searchType, searchItem.toLowerCase());
     const sorry = 'Sorry';
-    if (dataDrinkTwo.drinks === null || dataDrinkTwo.drinks === undefined) {
+    if (drinksFetch.drink === null) {
       return global.alert(`${sorry}, we haven't found any recipes for these filters.`);
     }
-    setDataDrinks(dataDrinkTwo.drinks);
-    checkIfOneRecipe(dataDrinkTwo.drinks, dataDrinkTwo.drinks[0].idDrink);
+    if (drinksFetch.drinks.length === 1) {
+      history.push(`${title.toLowerCase()}/${drinksFetch.drinks[0].idDrink}`);
+    }
+    setDataDrinks(drinksFetch.drinks);
   };
 
   const searchRecipe = () => {
