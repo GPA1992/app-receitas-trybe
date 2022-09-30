@@ -4,7 +4,6 @@ import context from '../contexts/ContextRecipe';
 import './Login.css';
 
 export default function Login() {
-  // Adiciona nossa versão
   const { setTitle } = useContext(context);
 
   useEffect(() => { setTitle('Login'); });
@@ -42,12 +41,11 @@ export default function Login() {
   };
 
   return (
-
     <div
       className="content-login"
     >
       <form className="form-login">
-        <h2>Título do App</h2>
+        <h2>RECIPES app</h2>
         <label htmlFor="email-input">
           <input
             name="email"

@@ -8,8 +8,8 @@ import './Header.css';
 
 export default function Header() {
   const history = useHistory();
-  const { pageTitle, showHeaderButtons,
-    setShowHeaderButtons, setSearchitem } = useContext(context);
+  const { title, showHeaderButtons,
+    setShowHeaderButtons, setSearchItem } = useContext(context);
   const { profile, search, inputSearch } = showHeaderButtons;
 
   const viewInputSearch = () => {
@@ -21,7 +21,7 @@ export default function Header() {
 
   const searchItemCapture = ({ target }) => {
     const { value } = target;
-    setSearchitem(value);
+    setSearchItem(value);
   };
 
   return (
@@ -36,10 +36,7 @@ export default function Header() {
             <img data-testid="profile-top-btn" src={ profileIcon } alt="profile-icon" />
           </button>
         )}
-        <h3 data-testid="page-title">
-          { pageTitle }
-          RECIPES app
-        </h3>
+        <h3 data-testid="page-title">{ title }</h3>
         { search && (
           <button
             onClick={ viewInputSearch }
