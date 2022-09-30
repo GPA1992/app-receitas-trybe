@@ -6,9 +6,14 @@ import Footer from '../component/Footer';
 import Header from '../component/Header';
 
 export default function Meals() {
-  const { title, setTitle, setMealsCategories } = useContext(context);
+  const { title, setTitle,
+    setMealsCategories, setShowHeaderButtons } = useContext(context);
 
   useEffect(() => {
+    setShowHeaderButtons({
+      profile: true,
+      search: true,
+    });
     console.log('Title value before render: ', title);
     async function getMealsCategories() {
       const data = await fetchMealsCategories();
