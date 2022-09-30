@@ -1,8 +1,11 @@
 async function fetchDrinks(type, query) {
+  console.log(type, query);
   try {
     if (type === 'name') {
       const getByName = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
       const dataName = await getByName.json();
+      console.log('entrou no if');
+      console.log(dataName);
       return dataName;
     } if (type === 'category') {
       const getByCategory = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${query}`);

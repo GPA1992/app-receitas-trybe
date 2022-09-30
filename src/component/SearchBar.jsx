@@ -16,36 +16,37 @@ export default function SearchBar() {
     setSearchType(value);
   };
 
+  const checkIfOneRecipe = (array, id) => {
+    if (array.length === 1) {
+      history.push(`${title.toLowerCase()}/${id}`);
+    }
+  };
+
   const mealsHandle = async () => {
-    const mealsFetch = await fetchMeals(searchType, searchItem.toLowerCase());
-    const sorry = 'Sorry';
-    if (mealsFetch.meals === null) {
-      return global.alert(`${sorry}, we haven't found any recipes for these filters.`);
+    const dataMealsTwo = await fetchMeals(searchType, searchItem);
+    if (dataMealsTwo.meals === null) {
+      return global.alert('Sorry, we haven\'t found any recipes for these filters.');
     }
-    if (mealsFetch.meals.length === 1) {
-      history.push(`${title.toLowerCase()}/${mealsFetch.meals[0].idMeal}`);
-    }
-    setDataMeals(mealsFetch.meals);
+    checkIfOneRecipe(dataMealsTwo.meals, dataMealsTwo.meals[0].idMeal);
+    setDataMeals(dataMealsTwo.meals);
   };
 
   const drinkHandle = async () => {
-    const drinksFetch = await fetchDrinks(searchType, searchItem.toLowerCase());
-    const sorry = 'Sorry';
-    if (drinksFetch.drink === null) {
-      return global.alert(`${sorry}, we haven't found any recipes for these filters.`);
+    const dataDrinkTwo = await fetchDrinks(searchType, searchItem);
+
+    if (dataDrinkTwo.drinks === null) {
+      return global.alert('Sorry, we haven\'t found any recipes for these filters.');
     }
-    if (drinksFetch.drinks.length === 1) {
-      history.push(`${title.toLowerCase()}/${drinksFetch.drinks[0].idDrink}`);
-    }
-    setDataDrinks(drinksFetch.drinks);
+    setDataDrinks(dataDrinkTwo.drinks);
+    checkIfOneRecipe(dataDrinkTwo.drinks, dataDrinkTwo.drinks[0].idDrink);
   };
 
   const searchRecipe = () => {
     const ifFirstLetter = searchType === 'first-letter' && searchItem.length >= 2;
-
     if (ifFirstLetter === true) {
       return global.alert('Your search must have only 1 (one) character');
     }
+
     if (title === 'Meals') {
       return mealsHandle();
     }
