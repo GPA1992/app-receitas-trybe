@@ -135,17 +135,18 @@ function RecipeDetails(props) {
         <div className="instructions-recipe-details">
           <p data-testid="instructions">{recipeDetails.strInstructions}</p>
           <div className="recipe-details-youtube">
-            <iframe
-              data-testid="video"
-              width="640"
-              height="360"
-              src={ recipeDetails.strYoutube }
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+            {recipeDetails.strYoutube && (
+              <iframe
+                data-testid="video"
+                width="300"
+                src={ recipeDetails.strYoutube.replace('watch?v=', 'embed/') }
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media;
                  gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+                allowFullScreen
+              />
+            )}
           </div>
         </div>
       </div>

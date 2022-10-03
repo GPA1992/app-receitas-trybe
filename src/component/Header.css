@@ -45,14 +45,17 @@
 .search-header-radio {
   align-items: center;
   display: flex;
-
-  /* border: blue solid 1px; */
   font-size: small;
   justify-content: space-around;
   padding-bottom: 3px;
   padding-top: 3px;
   width: 100%;
 }
+
+.search-header-radio input {
+  margin-left: 5px;
+}
+
 
 .input-text-search {
   border: 0;
