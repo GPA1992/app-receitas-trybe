@@ -1,7 +1,3 @@
-import oneMeal from '../../../cypress/mocks/oneMeal';
-import oneDrinkId15997 from '../../../cypress/mocks/oneDrinkId15997';
-import drinks from '../../../cypress/mocks/drinks';
-
 export const MOCK_DONE_RECIPE = [
   {
     id: '52771',
