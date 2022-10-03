@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
-import { act } from 'react-dom/test-utils';
 import requestFetchApi from '../../service/RequestFetchApi';
 import './RecipeDetails.css';
 import { getFromLocalStorage } from '../../service/localStorage';
@@ -27,8 +26,8 @@ function RecipeDetails(props) {
         ? await requestFetchApi(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
         : await requestFetchApi(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
       return pathname.includes('/meals')
-        ? act(() => setRecipeDetails(response.meals[0]))
-        : act(() => setRecipeDetails(response.drinks[0]));
+        ? setRecipeDetails(response.meals[0])
+        : setRecipeDetails(response.drinks[0]);
     };
     fetchApi();
   }, [pathname, props]);
