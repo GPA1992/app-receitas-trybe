@@ -1,13 +1,61 @@
 .main-description {
-  height: 100vh;
   width: 100vw;
 }
 
+.img-recipe-details {
+  position: relative;
+}
+
+.header-details {
+  border: pink 1px solid;
+}
+
+.header-details-title {
+  background-color: rgba(94, 94, 94, 0.596);
+
+  /* border: green 1px solid; */
+  color: white;
+  position: absolute;
+  top: 260px;
+  width: 100%;
+}
+
+.header-details-title h1, h2 {
+  margin-left: 10px;
+}
+
+.div-ingredients-recipe-details {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.div-instructions-recipe-details {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.ingredients-recipe-details {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 20px 10px 0;
+  padding: 10px;
+}
+
+.instructions-recipe-details {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 20px 10px 0;
+  padding: 10px;
+}
+
 .main-description button {
-  background-color: green;
+
+  /* background-color: green; */
+  background-color: rgb(197, 160, 90);
   border: none;
-  border-radius: 30px;
-  bottom: 0;
+
+  /* border-radius: 30px; */
+  bottom: 15px;
   color: white;
   padding: 10px;
   position: fixed;

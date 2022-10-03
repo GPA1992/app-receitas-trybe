@@ -80,51 +80,66 @@ function RecipeDetails(props) {
 
   return (
     <main className="main-description">
-      <img
-        data-testid="recipe-photo"
-        src={ recipeDetails.strMealThumb || recipeDetails.strDrinkThumb }
-        alt={ recipeDetails.strMeal || recipeDetails.strDrink }
-      />
-      <h1 data-testid="recipe-title">
-        {recipeDetails.strMeal || recipeDetails.strDrink}
-      </h1>
-      <h2 data-testid="recipe-category">
-        {pathname.includes('/meals')
-          ? recipeDetails.strCategory
-          : recipeDetails.strAlcoholic}
-      </h2>
-      <h3>Ingredients</h3>
-      <ul>
-        {ingredientsKeysFilred.map((key, index) => {
-          if (recipeDetails[key] !== null) {
-            const measurements = recipeDetails[`strMeasure${index + 1}`];
-            return (
-              <li
-                key={ index }
-                data-testid={ `${index}-ingredient-name-and-measure` }
-              >
-                {recipeDetails[key]}
-                {measurements !== null && ` - ${measurements}`}
-              </li>
-            );
-          }
-          return null;
-        })}
-      </ul>
-      <h3>Instructions</h3>
-      <p data-testid="instructions">{recipeDetails.strInstructions}</p>
-      <div>
-        <iframe
-          data-testid="video"
-          width="640"
-          height="360"
-          src={ recipeDetails.strYoutube }
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-                 gyroscope; picture-in-picture"
-          allowFullScreen
+      <header className="header-details">
+        <img
+          className="img-recipe-details"
+          data-testid="recipe-photo"
+          src={ recipeDetails.strMealThumb || recipeDetails.strDrinkThumb }
+          alt={ recipeDetails.strMeal || recipeDetails.strDrink }
         />
+        <div className="header-details-title">
+          <h1 data-testid="recipe-title">
+            {recipeDetails.strMeal || recipeDetails.strDrink}
+          </h1>
+          <h2 data-testid="recipe-category">
+            {pathname.includes('/meals')
+              ? recipeDetails.strCategory
+              : recipeDetails.strAlcoholic}
+          </h2>
+        </div>
+      </header>
+
+      <div className="div-ingredients-recipe-details">
+        <h3>Ingredients</h3>
+        <div className="ingredients-recipe-details">
+          <ul>
+            {ingredientsKeysFilred.map((key, index) => {
+              if (recipeDetails[key] !== null) {
+                const measurements = recipeDetails[`strMeasure${index + 1}`];
+                return (
+                  <li
+                    key={ index }
+                    data-testid={ `${index}-ingredient-name-and-measure` }
+                  >
+                    {recipeDetails[key]}
+                    {measurements !== null && ` - ${measurements}`}
+                  </li>
+                );
+              }
+              return null;
+            })}
+          </ul>
+        </div>
+      </div>
+
+      <div className="div-instructions-recipe-details">
+        <h3>Instructions</h3>
+        <div className="instructions-recipe-details">
+          <p data-testid="instructions">{recipeDetails.strInstructions}</p>
+          <div>
+            <iframe
+              data-testid="video"
+              width="640"
+              height="360"
+              src={ recipeDetails.strYoutube }
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                 gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
       </div>
 
       <h3>Recomendadas</h3>
@@ -147,7 +162,7 @@ function RecipeDetails(props) {
         ))}
       </section>
       { !recipeIsDone && (
-        <button type="button" data-testid="start-recipe-btn">
+        <button type="button" data-testid="start-recipe-btn" className="start-recipe-btn">
           Start Recipe
         </button>
       )}
