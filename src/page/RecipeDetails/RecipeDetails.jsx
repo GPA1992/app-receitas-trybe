@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory, useParams } from 'react-router-dom';
+import { act } from 'react-dom/test-utils';
 
-import requestFetchApi from '../service/RequestFetchApi';
+import requestFetchApi from '../../service/RequestFetchApi';
 import './RecipeDetails.css';
-import { getFromLocalStorage } from '../service/localStorage';
+import { getFromLocalStorage } from '../../service/localStorage';
+import ShareAndFavoriteButtons from './ShareAndFavoriteButtons';
 
 const MAX_RECOMMENDATIONS = 6;
 
@@ -15,19 +16,20 @@ function RecipeDetails(props) {
     selectedRecommendations: [],
   });
   const [recipeIsDone, setRecipeIsDone] = useState(false);
+  const [isInProgressRecipes, setIsInProgressRecipes] = useState(false);
 
   const { pathname } = useLocation();
+  const history = useHistory();
+  const { id } = useParams();
 
   useEffect(() => {
-    const { match: { params: { id } } } = props;
-
     const fetchApi = async () => {
       const response = pathname.includes('/meals')
         ? await requestFetchApi(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
         : await requestFetchApi(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
       return pathname.includes('/meals')
-        ? setRecipeDetails(response.meals[0])
-        : setRecipeDetails(response.drinks[0]);
+        ? act(() => setRecipeDetails(response.meals[0]))
+        : act(() => setRecipeDetails(response.drinks[0]));
     };
     fetchApi();
   }, [pathname, props]);
@@ -61,12 +63,21 @@ function RecipeDetails(props) {
 
   useEffect(() => {
     const doneRecipes = getFromLocalStorage('doneRecipes');
-    const { match: { params: { id } } } = props;
     if (doneRecipes !== null) {
-      const isDone = doneRecipes.some(
+      const isDone = doneRecipes?.some(
         (recipe) => recipe.id === id,
       );
       setRecipeIsDone(isDone);
+    }
+  }, []);
+
+  useEffect(() => {
+    const inProgressRecipes = getFromLocalStorage('inProgressRecipes');
+    if (inProgressRecipes !== null) {
+      const isRecipeInProgress = pathname.includes('/meals')
+        ? inProgressRecipes?.meals[id] !== undefined
+        : inProgressRecipes?.drinks[id] !== undefined;
+      setIsInProgressRecipes(isRecipeInProgress);
     }
   }, []);
 
@@ -74,7 +85,7 @@ function RecipeDetails(props) {
     (key) => key.includes('strIngredient'),
   );
 
-  const ingredientsKeysFilred = ingredientsKeys.filter(
+  const ingredientsKeysFiltered = ingredientsKeys.filter(
     (key) => recipeDetails[key] !== null && recipeDetails[key] !== '',
   );
 
@@ -93,22 +104,22 @@ function RecipeDetails(props) {
           ? recipeDetails.strCategory
           : recipeDetails.strAlcoholic}
       </h2>
+
+      <ShareAndFavoriteButtons recipeDetails={ recipeDetails } />
+
       <h3>Ingredients</h3>
       <ul>
-        {ingredientsKeysFilred.map((key, index) => {
-          if (recipeDetails[key] !== null) {
-            const measurements = recipeDetails[`strMeasure${index + 1}`];
-            return (
-              <li
-                key={ index }
-                data-testid={ `${index}-ingredient-name-and-measure` }
-              >
-                {recipeDetails[key]}
-                {measurements !== null && ` - ${measurements}`}
-              </li>
-            );
-          }
-          return null;
+        {ingredientsKeysFiltered.map((key, index) => {
+          const measurements = recipeDetails[`strMeasure${index + 1}`];
+          return (
+            <li
+              key={ index }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+            >
+              {recipeDetails[key]}
+              {measurements !== null && ` - ${measurements}`}
+            </li>
+          );
         })}
       </ul>
       <h3>Instructions</h3>
@@ -147,20 +158,19 @@ function RecipeDetails(props) {
         ))}
       </section>
       { !recipeIsDone && (
-        <button type="button" data-testid="start-recipe-btn">
-          Start Recipe
+        <button
+          type="button"
+          className="start-recipe-btn"
+          data-testid="start-recipe-btn"
+          onClick={ () => history.push(
+            `${pathname}/in-progress`,
+          ) }
+        >
+          {isInProgressRecipes ? 'Continue Recipe' : 'Start Recipe'}
         </button>
       )}
     </main>
   );
 }
-
-RecipeDetails.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-  }).isRequired,
-};
 
 export default RecipeDetails;

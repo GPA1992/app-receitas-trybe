@@ -3,7 +3,7 @@
   width: 100vw;
 }
 
-.main-description button {
+/* .main-description button {
   background-color: green;
   border: none;
   border-radius: 30px;
@@ -11,12 +11,16 @@
   color: white;
   padding: 10px;
   position: fixed;
-}
+} */
 
 .start-recipe-btn {
-  position: absolute;
-  width: 1000px;
-  z-index: 1;
+  background-color: green;
+  border: none;
+  border-radius: 30px;
+  bottom: 0;
+  color: white;
+  padding: 10px;
+  position: fixed;
 }
 
 .recommendation-card {
