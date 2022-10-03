@@ -62,7 +62,7 @@ export default function Login() {
             name="password"
             data-testid="password-input"
             type="password"
-            placeholder="Senha"
+            placeholder="Password"
           />
         </label>
         <button

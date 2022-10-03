@@ -1,26 +1,110 @@
 .main-description {
-  height: 100vh;
   width: 100vw;
 }
 
-/* .main-description button {
-  background-color: green;
-  border: none;
-  border-radius: 30px;
-  bottom: 0;
+.img-recipe-details {
+  position: relative;
+  width: 100%;
+}
+
+.header-details-title {
+  background-color: rgba(94, 94, 94, 0.596);
   color: white;
+  height: 85px;
+  position: absolute;
+  top: 260px;
+  width: 100%;
+}
+
+.header-details-title h1, h2 {
+  font-size: x-large;
+  margin-left: 10px;
+}
+
+.favorite-button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  bottom: 350px;
+  left: 60%;
+  position: relative;
+}
+
+.favorite-button img {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  height: 28px;
+}
+
+.share-button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  bottom: 350px;
+  left: 62%;
+  position: relative;
+}
+
+.link-copied {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  bottom: 325px;
+  color: rgba(0, 0, 0, 0.929);
+  font-size: small;
+  left: 45%;
+  position: relative;
+}
+
+
+.button-back {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  bottom: 350px;
+  height: 25px;
+  left: 2%;
+  position: relative;
+}
+
+.button-back img {
+  height: 28px;
+}
+
+.div-ingredients-recipe-details {
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+.div-instructions-recipe-details {
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.ingredients-recipe-details {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 20px 10px 0;
   padding: 10px;
-  position: fixed;
-} */
+}
+
+.instructions-recipe-details {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 20px 10px 0;
+  padding: 10px;
+}
+
+.div-recommendation-recipe-details {
+  margin-left: 10px;
+  margin-top: 20px;
+}
 
 .start-recipe-btn {
-  background-color: green;
+  background-color: rgb(197, 160, 90);
   border: none;
   border-radius: 30px;
-  bottom: 0;
+  bottom: 15px;
   color: white;
   padding: 10px;
   position: fixed;
+  width: 1000px;
 }
 
 .recommendation-card {
@@ -36,9 +120,10 @@
   width: 163.35px;
 }
 
-.section-recomendation {
+.section-recommendation {
   display: flex;
-  height: 250px;
+  height: 225px;
   overflow-x: scroll;
   width: 100vw;
 }
+

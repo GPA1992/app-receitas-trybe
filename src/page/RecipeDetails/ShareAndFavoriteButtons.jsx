@@ -1,16 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-
 import { getFromLocalStorage, pushInLocalStorage } from '../../service/localStorage';
 import shareButtonImage from '../../images/shareIcon.svg';
 import whiteFavoriteButtonImage from '../../images/whiteHeartIcon.svg';
 import blackFavoriteButtonImage from '../../images/blackHeartIcon.svg';
+import buttonBack from '../../images/buttonback2.png';
 
 function ShareAndFavoriteButtons({ recipeDetails }) {
   const [copiedLink, setCopiedLink] = useState(false);
   const [isFavoritedRecipe, setIsFavoritedRecipe] = useState(false);
-
   const { pathname } = useLocation();
   const { id } = useParams();
 
@@ -58,21 +57,17 @@ function ShareAndFavoriteButtons({ recipeDetails }) {
   };
 
   return (
-    <>
-
+    <section className="share-favorite">
       <button
         type="button"
-        data-testid="share-btn"
-        onClick={ shareRecipe }
-        src={ shareButtonImage }
+        className="button-back"
+        onClick={ () => window.history.back() }
       >
-        <img
-          src={ shareButtonImage }
-          alt="share"
-        />
+        <img src={ buttonBack } alt="button-back" />
       </button>
-      {copiedLink && <p>Link copied!</p>}
+
       <button
+        className="favorite-button"
         type="button"
         data-testid="favorite-btn"
         onClick={ addAndRemoveFavoriteRecipe }
@@ -84,7 +79,22 @@ function ShareAndFavoriteButtons({ recipeDetails }) {
           alt="favorite"
         />
       </button>
-    </>
+
+      <button
+        className="share-button"
+        type="button"
+        data-testid="share-btn"
+        onClick={ shareRecipe }
+        src={ shareButtonImage }
+      >
+        <img
+          src={ shareButtonImage }
+          alt="share"
+        />
+      </button>
+      {copiedLink && <span className="link-copied">Link copied!</span>}
+
+    </section>
   );
 }
 
