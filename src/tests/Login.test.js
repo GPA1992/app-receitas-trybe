@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './utils/renderWithRouter';
 
-const placeholderEmail = 'exemplo@exemplo.com';
+const emailTestID = 'email-input';
 const testEmail = 'email@email.com';
 const testPassword = '1234567';
 const loginButton = 'login-submit-btn';
@@ -12,7 +12,7 @@ const loginButton = 'login-submit-btn';
 describe('Verifica se a página Login', () => {
   it('tem os inputs de e-mail e senha', () => {
     renderWithRouter(<App />);
-    const emailInput = screen.getByPlaceholderText(placeholderEmail);
+    const emailInput = screen.getByTestId(emailTestID);
     const passwordInput = screen.getByPlaceholderText(/senha/i);
 
     expect(emailInput).toBeInTheDocument();
@@ -21,7 +21,7 @@ describe('Verifica se a página Login', () => {
 
   it('habilita o botão pra logar ao cumprir a condição', () => {
     renderWithRouter(<App />);
-    const emailInput = screen.getByPlaceholderText(placeholderEmail);
+    const emailInput = screen.getByTestId(emailTestID);
     const passwordInput = screen.getByPlaceholderText(/senha/i);
     const button = screen.getByTestId(loginButton);
 
@@ -34,7 +34,7 @@ describe('Verifica se a página Login', () => {
 
   it('te redireciona para a página Meals', () => {
     const { history } = renderWithRouter(<App />, {}, '/meals');
-    const emailInput = screen.getByPlaceholderText(placeholderEmail);
+    const emailInput = screen.getByTestId(emailTestID);
     const passwordInput = screen.getByPlaceholderText(/senha/i);
     const button = screen.getByTestId(loginButton);
 
@@ -49,7 +49,7 @@ describe('Verifica se a página Login', () => {
 
   it('deve ter o mesmo valor do input que foi digitado pelo usuário', () => {
     renderWithRouter(<App />);
-    const emailInput = screen.getByPlaceholderText(placeholderEmail);
+    const emailInput = screen.getByTestId(emailTestID);
     userEvent.type(emailInput, testEmail);
     expect(emailInput.value).toBe(testEmail);
 
@@ -60,7 +60,7 @@ describe('Verifica se a página Login', () => {
 
   it('desabilita o botão se retirar o texto do input', () => {
     renderWithRouter(<App />);
-    const emailInput = screen.getByPlaceholderText(placeholderEmail);
+    const emailInput = screen.getByTestId(emailTestID);
     const passwordInput = screen.getByPlaceholderText(/senha/i);
     const button = screen.getByTestId(loginButton);
 
