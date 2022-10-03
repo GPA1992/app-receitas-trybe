@@ -25,6 +25,8 @@ function Provider({ children }) {
     setSelectedMeal,
     selectedDrink,
     setSelectedDrink,
+    showInputSearch,
+    setShowInputSearch,
   } = useContextHook();
 
   const value = {
@@ -48,6 +50,8 @@ function Provider({ children }) {
     setSelectedMeal,
     selectedDrink,
     setSelectedDrink,
+    showInputSearch,
+    setShowInputSearch,
   };
 
   return (

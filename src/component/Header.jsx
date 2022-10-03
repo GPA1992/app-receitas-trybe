@@ -8,15 +8,13 @@ import './Header.css';
 
 export default function Header() {
   const history = useHistory();
-  const { title, showHeaderButtons,
-    setShowHeaderButtons, setSearchItem } = useContext(context);
-  const { profile, search, inputSearch } = showHeaderButtons;
+  const { title, setSearchItem, showInputSearch,
+    setShowInputSearch, showHeaderButtons } = useContext(context);
+  const { inputSearch } = showInputSearch;
+  const { profile, search } = showHeaderButtons;
 
   const viewInputSearch = () => {
-    setShowHeaderButtons((previousState) => ({
-      ...previousState,
-      inputSearch: !inputSearch,
-    }));
+    setShowInputSearch({ inputSearch: !inputSearch });
   };
 
   const searchItemCapture = ({ target }) => {
@@ -25,10 +23,11 @@ export default function Header() {
   };
 
   return (
-    <header className="header-css">
+    <header data-testid="header" className="header-css">
       <div className="header-title">
         { profile && (
           <button
+            data-testid="go-to-profile"
             onClick={ () => history.push('/profile') }
             type="button"
             src={ profileIcon }
@@ -57,7 +56,6 @@ export default function Header() {
           <SearchBar />
         </div>
       )}
-
     </header>
   );
 }
