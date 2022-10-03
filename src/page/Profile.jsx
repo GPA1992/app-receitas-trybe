@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Footer from '../component/Footer';
 import context from '../contexts/ContextRecipe';
 import Header from '../component/Header';
+import './Profile.css';
 
 export default function Profile() {
   const { setTitle, setShowHeaderButtons } = useContext(context);
@@ -24,34 +25,39 @@ export default function Profile() {
   return (
     <main>
       <Header />
-      <section>
-        <button
-          data-testid="profile-done-btn"
-          type="button"
-          onClick={ () => history.push('/done-recipes') }
-        >
-          Done Recipes
-        </button>
+      <div className="page-profile-content">
+        <div>
+          <h3> PROFILE</h3>
+        </div>
 
-        <button
-          data-testid="profile-favorite-btn"
-          type="button"
-          onClick={ () => history.push('/favorite-recipes') }
-        >
-          Favorite Recipes
-        </button>
+        <div data-testid="profile-email">{ email }</div>
 
-        <button
-          data-testid="profile-logout-btn"
-          type="button"
-          onClick={ () => userLogout() }
-        >
-          Logout
-        </button>
-      </section>
+        <section className="section-profile-button">
+          <button
+            data-testid="profile-done-btn"
+            type="button"
+            onClick={ () => history.push('/done-recipes') }
+          >
+            Done Recipes
+          </button>
 
-      <div>PROFILE</div>
-      <div data-testid="profile-email">{ email }</div>
+          <button
+            data-testid="profile-favorite-btn"
+            type="button"
+            onClick={ () => history.push('/favorite-recipes') }
+          >
+            Favorite Recipes
+          </button>
+
+          <button
+            data-testid="profile-logout-btn"
+            type="button"
+            onClick={ () => userLogout() }
+          >
+            Logout
+          </button>
+        </section>
+      </div>
       <Footer />
 
     </main>

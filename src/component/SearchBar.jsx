@@ -57,43 +57,47 @@ export default function SearchBar() {
 
   return (
     <div className="search-header">
-      <label htmlFor="ingredient-search-radio">
-        Ingredients
-        <input
-          value="ingredient"
-          onClick={ onClickSearchType }
-          name="search-type"
-          data-testid="ingredient-search-radio"
-          type="radio"
-        />
-      </label>
-      <label htmlFor="name-search-radio">
-        Name
-        <input
-          value="name"
-          onClick={ onClickSearchType }
-          name="search-type"
-          data-testid="name-search-radio"
-          type="radio"
-        />
-      </label>
-      <label htmlFor="first-letter-search-radio">
-        First letter
-        <input
-          value="first-letter"
-          onClick={ onClickSearchType }
-          name="search-type"
-          data-testid="first-letter-search-radio"
-          type="radio"
-        />
-      </label>
+      <div className="search-header-radio">
+        <label htmlFor="ingredient-search-radio">
+          Ingredients
+          <input
+            value="ingredient"
+            onClick={ onClickSearchType }
+            name="search-type"
+            data-testid="ingredient-search-radio"
+            type="radio"
+          />
+        </label>
+        <label htmlFor="name-search-radio">
+          Name
+          <input
+            value="name"
+            onClick={ onClickSearchType }
+            name="search-type"
+            data-testid="name-search-radio"
+            type="radio"
+          />
+        </label>
+        <label htmlFor="first-letter-search-radio">
+          First letter
+          <input
+            value="first-letter"
+            onClick={ onClickSearchType }
+            name="search-type"
+            data-testid="first-letter-search-radio"
+            type="radio"
+          />
+        </label>
+      </div>
       <button
         onClick={ searchRecipe }
         type="button"
         data-testid="exec-search-btn"
       >
-        Search
+        SEARCH
       </button>
+
     </div>
+
   );
 }

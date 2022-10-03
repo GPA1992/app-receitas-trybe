@@ -25,6 +25,6 @@
 
 
 .category-area button:hover {
-  background-color: rgb(255, 168, 19);
+  background-color: rgb(255, 168, 19, 0.5);
 }
 
