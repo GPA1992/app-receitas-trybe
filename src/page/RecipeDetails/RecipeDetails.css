@@ -70,11 +70,13 @@
 .div-ingredients-recipe-details {
   margin-left: 10px;
   margin-top: 0;
+  width: 95%;
 }
 
 .div-instructions-recipe-details {
   margin-left: 10px;
   margin-top: 20px;
+  width: 95%;
 }
 
 .ingredients-recipe-details {
@@ -100,17 +102,18 @@
   background-color: rgb(197, 160, 90);
   border: none;
   border-radius: 30px;
-  bottom: 15px;
+  bottom: 0;
   color: white;
+  margin-bottom: 15px;
   padding: 10px;
   position: fixed;
-  width: 1000px;
+  width: 100%;
 }
 
 .recommendation-card {
   height: 30px;
-  margin: 0 20px;
-  width: 200px;
+  margin: 0 10px;
+  width: 155px;
 }
 
 .recommendation-card img {
@@ -124,6 +127,37 @@
   display: flex;
   height: 225px;
   overflow-x: scroll;
+  width: 100%;
+}
+
+.section-recommendation:nth-child( 1 ) {
+  flex: 1;
+  width: 50%;
+}
+
+
+/* .recommendation-card {
+  height: 220px;
+  margin: 0 10px;
+  width: 150px;
+}
+
+.recommendation-card img {
+  height: 134.85px;
+  left: 12px;
+  top: 898px;
+  width: 163.35px;
+}
+
+.section-recommendation {
+  display: flex;
+  overflow-x: scroll;
   width: 100vw;
 }
 
+.section-recommendation:nth-child( 1 ) {
+  flex: 1;
+  width: 50%;
+}
+
+ */

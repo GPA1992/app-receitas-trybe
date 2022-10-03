@@ -45,7 +45,7 @@ export default function Login() {
       className="content-login"
     >
       <form className="form-login">
-        <h2>RECIPES app</h2>
+        <h2>Recipes APP</h2>
         <label htmlFor="email-input">
           <input
             name="email"

@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-
+import context from '../contexts/ContextRecipe';
 import Header from '../component/Header';
 import { getFromLocalStorage, pushInLocalStorage } from '../service/localStorage';
 import shareButton from '../images/shareIcon.svg';
-// import './DoneRecipes.css';
+import './DoneRecipes.css';
 
 function DoneRecipes() {
+  const { setTitle, setShowHeaderButtons } = useContext(context);
   const [doneRecipes, setDoneRecipes] = useState({
     meals: [],
     drinks: [],
@@ -20,6 +21,11 @@ function DoneRecipes() {
   const history = useHistory();
 
   useEffect(() => {
+    setShowHeaderButtons({
+      profile: true,
+      search: false,
+    });
+    setTitle('Done Recipes');
     const listOfDoneRecipes = getFromLocalStorage('doneRecipes');
 
     if (listOfDoneRecipes !== null) {
@@ -45,8 +51,8 @@ function DoneRecipes() {
 
   return (
     <div>
-      <Header title="Done Recipes" disabledSearch={ false } />
-      <section>
+      <Header />
+      <section className="category-area-done">
         <button
           data-testid="filter-by-all-btn"
           type="button"
@@ -73,6 +79,7 @@ function DoneRecipes() {
         {doneRecipes[filterSelected].map((recipe, index) => (
           <div
             key={ index }
+            className="content-done-recipes"
           >
             <Link
               to={ `/${recipe.type}s/${recipe.id}` }
