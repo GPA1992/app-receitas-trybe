@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams, useHistory } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { getFromLocalStorage, pushInLocalStorage } from '../../service/localStorage';
 import shareButtonImage from '../../images/shareIcon.svg';
 import whiteFavoriteButtonImage from '../../images/whiteHeartIcon.svg';
@@ -12,7 +12,6 @@ function ShareAndFavoriteButtons({ recipeDetails }) {
   const [isFavoritedRecipe, setIsFavoritedRecipe] = useState(false);
   const { pathname } = useLocation();
   const { id } = useParams();
-  const history = useHistory();
 
   useEffect(() => {
     const favoriteRecipes = getFromLocalStorage('favoriteRecipes');
