@@ -11,7 +11,7 @@ import DoneRecipes from './page/DoneRecipes';
 import Profile from './page/Profile';
 import FavoriteRecipes from './page/FavoriteRecipes';
 import RecipeInProgress from './page/RecipeInProgress';
-import RecipeDetails from './page/RecipeDetails';
+import RecipeDetails from './page/RecipeDetails/RecipeDetails';
 
 function App() {
   return (
