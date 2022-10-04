@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const useContextHook = () => {
+  const [showInputSearch, setShowInputSearch] = useState({ inputSearch: false });
   const [showHeaderButtons, setShowHeaderButtons] = useState({
     profile: true,
     search: true,
@@ -37,6 +38,8 @@ const useContextHook = () => {
     setSelectedMeal,
     selectedDrink,
     setSelectedDrink,
+    showInputSearch,
+    setShowInputSearch,
   };
 };
 
