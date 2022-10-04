@@ -14,7 +14,7 @@ function Filters({ setFilters }) {
   };
 
   return (
-    <div>
+    <div className="category-area-done">
       <button
         type="button"
         data-testid="filter-by-all-btn"

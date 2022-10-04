@@ -56,7 +56,6 @@
   margin-left: 5px;
 }
 
-
 .input-text-search {
   border: 0;
   border-radius: 10px;
@@ -72,5 +71,10 @@
   font-weight: 700;
   padding-left: 50px;
   padding-right: 50px;
+}
+
+.page-title-header {
+  color: black;
+  margin-top: 3px;
 }
 

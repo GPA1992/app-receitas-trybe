@@ -5,6 +5,7 @@ import fetchMeals from '../service/fetchMeals';
 import fetchDrinks from '../service/fetchDrinks';
 import { pushInLocalStorage, getFromLocalStorage } from '../service/localStorage';
 import ShareAndFavoriteButtons from './RecipeDetails/ShareAndFavoriteButtons';
+import './RecipeInProgress.css';
 
 function RecipeInProgress() {
   const history = useHistory();
@@ -110,59 +111,77 @@ function RecipeInProgress() {
   };
 
   return (
-    <section>
-      <img
-        data-testid="recipe-photo"
-        src={ recipeDetails.strMealThumb || recipeDetails.strDrinkThumb }
-        alt={ recipeDetails.strMeal || recipeDetails.strDrink }
-      />
-      <ShareAndFavoriteButtons recipeDetails={ recipeDetails } />
-      <h1 data-testid="recipe-title">
-        {recipeDetails.strMeal || recipeDetails.strDrink}
-      </h1>
-      <h2 data-testid="recipe-category">
-        { recipeDetails.strCategory || recipeDetails.strAlcoholic }
-      </h2>
+    <main>
+      <section className="main-description">
+        <header className="header-details">
+          <img
+            className="img-recipe-details"
+            data-testid="recipe-photo"
+            src={ recipeDetails.strMealThumb || recipeDetails.strDrinkThumb }
+            alt={ recipeDetails.strMeal || recipeDetails.strDrink }
+          />
+          <div className="header-details-title">
+            <h1 data-testid="recipe-title">
+              {recipeDetails.strMeal || recipeDetails.strDrink}
+            </h1>
+            <h2 data-testid="recipe-category">
+              { recipeDetails.strCategory || recipeDetails.strAlcoholic }
+            </h2>
+          </div>
+          <ShareAndFavoriteButtons recipeDetails={ recipeDetails } />
+        </header>
 
-      <div>
-        <h4>Ingredients List</h4>
-        <ul>
-          {ingredients.map((key, index) => {
-            if (recipeDetails[key] !== null) {
-              const measurements = recipeDetails[`strMeasure${index + 1}`];
-              return (
-                <li>
-                  <label
-                    htmlFor={ key }
-                    data-testid={ `${index}-ingredient-step` }
-                  >
-                    <input
-                      checked={ ingredientsDone.some((e) => e === key) }
-                      onChange={ ingredientsSetDone }
-                      name={ key }
-                      type="checkbox"
-                    />
-                    {recipeDetails[key]}
-                    {measurements !== null && ` - ${measurements}`}
-                  </label>
-                </li>
-              );
-            }
-            return null;
-          })}
-        </ul>
-      </div>
-      <h3>Instructions</h3>
-      <p data-testid="instructions">{recipeDetails.strInstructions}</p>
-      <button
-        disabled={ ingredientsDone.length !== ingredients.length }
-        onClick={ doneButton }
-        type="button"
-        data-testid="finish-recipe-btn"
-      >
-        Done Recipe
-      </button>
-    </section>
+        <div className="div-ingredients-recipe-details">
+          <h4>Ingredients List</h4>
+          <div className="ingredients-recipe-details">
+            <ul>
+              {ingredients.map((key, index) => {
+                if (recipeDetails[key] !== null) {
+                  const measurements = recipeDetails[`strMeasure${index + 1}`];
+                  return (
+                    <li>
+                      <label
+                        className="container"
+                        htmlFor={ key }
+                        data-testid={ `${index}-ingredient-step` }
+                      >
+                        <input
+                          checked={ ingredientsDone.some((e) => e === key) }
+                          onChange={ ingredientsSetDone }
+                          name={ key }
+                          type="checkbox"
+                          className="checkmark"
+                        />
+                        {recipeDetails[key]}
+                        {measurements !== null && ` - ${measurements}`}
+                      </label>
+                    </li>
+                  );
+                }
+                return null;
+              })}
+            </ul>
+          </div>
+        </div>
+
+        <div className="div-instructions-recipe-details">
+          <h3>Instructions</h3>
+          <div className="instructions-recipe-details">
+            <p data-testid="instructions">{recipeDetails.strInstructions}</p>
+          </div>
+
+        </div>
+        <button
+          disabled={ ingredientsDone.length !== ingredients.length }
+          onClick={ doneButton }
+          type="button"
+          data-testid="finish-recipe-btn"
+          className="done-recipe-btn"
+        >
+          Done Recipe
+        </button>
+      </section>
+    </main>
   );
 }
 

@@ -33,11 +33,11 @@
   width: 100%;
 }
 
-.form-login h2 {
+/* .form-login h2 {
   font-size: x-large;
   font-style: italic;
   margin-bottom: 15%;
-}
+} */
 
 .form-login button {
   border: solid rgba(0, 0, 0, 0.1) 1px;
@@ -47,4 +47,9 @@
   margin-top: 10%;
   text-align: center;
   width: 50%;
+}
+
+.logo-app-login {
+  margin-bottom: 10px;
+  width: 240px;
 }

@@ -4,6 +4,7 @@ import Footer from '../component/Footer';
 import context from '../contexts/ContextRecipe';
 import Header from '../component/Header';
 import './Profile.css';
+import voevo from '../images/logovoevo.png';
 
 export default function Profile() {
   const { setTitle, setShowHeaderButtons } = useContext(context);
@@ -26,6 +27,11 @@ export default function Profile() {
     <main>
       <Header />
       <div className="page-profile-content">
+        <img
+          src={ voevo }
+          alt="Logo Vô e Vó seu app de receitas caseiras"
+          className="logo-app-profile"
+        />
         <div>
           <h3> PROFILE</h3>
         </div>
