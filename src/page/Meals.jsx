@@ -14,14 +14,12 @@ export default function Meals() {
       profile: true,
       search: true,
     });
-    console.log('Title value before render: ', title);
     async function getMealsCategories() {
       const data = await fetchMealsCategories();
       setMealsCategories(data.meals);
     }
     getMealsCategories();
     setTitle('Meals');
-    console.log('Title value after render: ', title);
   }, []);
   // f
 

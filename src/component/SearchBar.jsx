@@ -33,15 +33,16 @@ export default function SearchBar() {
 
   const drinkHandle = async () => {
     const dataDrinkTwo = await fetchDrinks(searchType, searchItem);
-
     if (dataDrinkTwo.drinks === null) {
+      console.log('fui chamado');
       return global.alert('Sorry, we haven\'t found any recipes for these filters.');
     }
-    setDataDrinks(dataDrinkTwo.drinks);
     checkIfOneRecipe(dataDrinkTwo.drinks, dataDrinkTwo.drinks[0].idDrink);
+    setDataDrinks(dataDrinkTwo.drinks);
   };
 
   const searchRecipe = () => {
+    console.log('fui chamado sr');
     const ifFirstLetter = searchType === 'first-letter' && searchItem.length >= 2;
     if (ifFirstLetter === true) {
       return global.alert('Your search must have only 1 (one) character');
