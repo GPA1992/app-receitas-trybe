@@ -1,9 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import context from '../contexts/ContextRecipe';
 import Header from '../component/Header';
+import Filters from '../component/Filters';
+import RecipeCard from '../component/RecipeCard';
 
 function FavoriteRecipes() {
   const { setTitle, setShowHeaderButtons } = useContext(context);
+  const favoritesRecipes = JSON
+    .parse(localStorage.getItem('favoriteRecipes'));
+  const [filters, setFilters] = useState('all');
+  const [favorites, setFavorites] = useState(favoritesRecipes);
 
   useEffect(() => {
     setShowHeaderButtons({
@@ -13,10 +19,40 @@ function FavoriteRecipes() {
     setTitle('Favorite Recipes');
   }, []);
 
+  useEffect(() => {
+    console.log('Filters value: ', filters);
+    if (filters === 'all') {
+      setFavorites(favoritesRecipes);
+    } else {
+      const filteredRecipes = favoritesRecipes.filter((done) => done.type === filters);
+      setFavorites(filteredRecipes);
+    }
+  }, [filters]);
+
+  const updateFav = () => {
+    setFavorites(JSON.parse(localStorage.getItem('favoriteRecipes')));
+  };
+
+  if (!favorites || favorites.length === 0) {
+    return (
+      <div>
+        <Header />
+        <p>Não existe nenhuma receita salva!</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Header />
-      FavoriteRecipes
+      <Filters setFilters={ setFilters } />
+      {favorites ? (
+        <RecipeCard
+          recipe={ favorites }
+          isFavorite
+          handleUpdate={ updateFav }
+        />
+      ) : 'Nenhuma receita favoritada'}
     </div>
   );
 }
