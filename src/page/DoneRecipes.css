@@ -1,4 +1,4 @@
-.category-area {
+.category-area-done {
   background-color: rgb(245, 175, 53, 0.1);
   margin-top: 0;
   text-align: center;
@@ -7,7 +7,7 @@
 }
 
 
-.category-area button {
+.category-area-done button {
   background-color: rgb(245, 175, 53, 0.1);
   border-bottom: solid 1px rgb(231, 146, 0, 0.3);
   border-left: solid 1px rgb(231, 146, 0, 0.3);
@@ -23,8 +23,24 @@
   width: 33%;
 }
 
+.content-done-recipes {
+  border-bottom: 1px solid rgb(179, 179, 179);
+  margin-top: 30px;
+  padding-bottom: 10px;
+  text-align: center;
+}
 
-.category-area button:hover {
+.content-done-recipes button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+}
+
+.recipe-image {
+  border-radius: 100px;
+  width: 50%;
+}
+
+.category-area-done button:hover {
   background-color: rgb(255, 168, 19, 0.5);
 }
 

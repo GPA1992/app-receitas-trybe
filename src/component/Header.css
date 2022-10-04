@@ -22,6 +22,7 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
+  margin-right: 10px;
 }
 
 .header-title h3 {
@@ -38,10 +39,12 @@
 }
 
 .search-header {
+  text-align: center;
+}
+
+.search-header-radio {
   align-items: center;
   display: flex;
-
-  /* border: blue solid 1px; */
   font-size: small;
   justify-content: space-around;
   padding-bottom: 3px;
@@ -49,9 +52,25 @@
   width: 100%;
 }
 
-.search-header button {
-  background-color: rgb(240, 165, 35);
+.search-header-radio input {
+  margin-left: 5px;
+}
+
+
+.input-text-search {
   border: 0;
   border-radius: 10px;
+  margin: 10px 20px 5px;
+  padding-left: 20px;
+}
+
+.search-header button {
+  background-color: rgb(236, 219, 189);
+  border: 0;
+  border-radius: 10px;
+  font-size: small;
+  font-weight: 700;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 

@@ -45,7 +45,7 @@ export default function Login() {
       className="content-login"
     >
       <form className="form-login">
-        <h2>RECIPES app</h2>
+        <h2>Recipes APP</h2>
         <label htmlFor="email-input">
           <input
             name="email"
@@ -62,7 +62,7 @@ export default function Login() {
             name="password"
             data-testid="password-input"
             type="password"
-            placeholder="Senha"
+            placeholder="Password"
           />
         </label>
         <button

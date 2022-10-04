@@ -53,6 +53,8 @@ export default function Header() {
             onChange={ searchItemCapture }
             type="text"
             data-testid="search-input"
+            placeholder="Search"
+            className="input-text-search"
           />
           <SearchBar />
         </div>

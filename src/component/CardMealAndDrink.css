@@ -16,7 +16,7 @@
   width: 40%;
 }
 
-.only-card-drink-meal :hover {
+.only-card-drink-meal:hover {
   background-color: rgb(255, 249, 241);
 }
 
