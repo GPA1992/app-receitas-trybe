@@ -17,6 +17,11 @@ async function fetchMeals(type, query) {
       const dataCategory = await getByCategory.json();
       return dataCategory;
     }
+    if (type === 'id') {
+      const getById = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${query}`);
+      const dataId = await getById.json();
+      return dataId.meals[0];
+    }
   } catch (error) {
     console.log(error);
   }
