@@ -20,6 +20,11 @@ async function fetchDrinks(type, query) {
       const dataCategory = await getByCategory.json();
       return dataCategory;
     }
+    if (type === 'id') {
+      const getById = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${query}`);
+      const dataId = await getById.json();
+      return dataId.drinks[0];
+    }
   } catch (error) {
     console.log(error);
   }

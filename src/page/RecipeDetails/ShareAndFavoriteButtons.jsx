@@ -24,8 +24,10 @@ function ShareAndFavoriteButtons({ recipeDetails }) {
   }, []);
 
   const shareRecipe = () => {
-    navigator.clipboard.writeText(window.location.origin + pathname);
+    const mealOrDrink = pathname.includes('/meals') ? '/meals/' : '/drinks/';
+    navigator.clipboard.writeText(window.location.origin + mealOrDrink + id);
     setCopiedLink(true);
+    console.log(window.location.origin + pathname);
   };
 
   const addAndRemoveFavoriteRecipe = () => {
