@@ -22,8 +22,8 @@
 }
 
 .favorite-button {
-  background-color: rgba(255, 255, 255, 0);
-  border: 0;
+  background-color: rgba(255, 255, 255, 0.205);
+  border-radius: 100%;
   bottom: 350px;
   left: 60%;
   position: relative;
@@ -36,11 +36,13 @@
 }
 
 .share-button {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0.205);
   border: 0;
+  border-radius: 100%;
   bottom: 350px;
   left: 62%;
   position: relative;
+
 }
 
 .link-copied {
@@ -55,10 +57,11 @@
 
 
 .button-back {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0.205);
   border: 0;
+  border-radius: 50%;
   bottom: 350px;
-  height: 25px;
+  height: 30px;
   left: 2%;
   position: relative;
 }
@@ -135,6 +138,22 @@
   width: 50%;
 }
 
+.favorite-page-html {
+  height: 100%;
+  min-height: 300px;
+}
+
+.not-favorite {
+
+  /* background-color: red; */
+  margin-bottom: 70%;
+  margin-top: 30%;
+  position: relative;
+}
+
+.favorite-page-content {
+  text-align: center;
+}
 
 /* .recommendation-card {
   height: 220px;

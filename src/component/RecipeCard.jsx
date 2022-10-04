@@ -69,7 +69,7 @@ function RecipeCard({ recipe, isFavorite, handleUpdate }) {
               {index === msgIndex
                 ? <p hidden={ !msg }> Link copied! </p> : ''}
               <Link to={ `/${element.type}s/${element.id}` }>
-                <p className="title" data-testid={ `${index}-horizontal-name` }>
+                <p className="link-favorite" data-testid={ `${index}-horizontal-name` }>
                   {element.name}
                 </p>
               </Link>

@@ -12,6 +12,7 @@
 .only-card-drink-meal {
   border-radius: 20px;
   box-shadow: 10px 5px 5px rgb(253, 235, 205);
+  height: 100%;
   margin: 10px;
   padding: 10px;
   width: 40%;
@@ -23,7 +24,7 @@
 
 .only-card-drink-meal h2 {
   background-color: rgba(255, 255, 255, 0);
-  font-size: x-large;
+  font-size: large;
 }
 
 .card-drink-meal-css img {
