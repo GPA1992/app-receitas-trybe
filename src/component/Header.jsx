@@ -38,6 +38,7 @@ export default function Header() {
         <h3 data-testid="page-title">{ title }</h3>
         { search && (
           <button
+            data-testid="show-search-input"
             onClick={ viewInputSearch }
             type="button"
             src={ searchIcon }
