@@ -25,7 +25,10 @@ function RecipeCard({ recipe, isFavorite, handleUpdate }) {
     <div>
       {recipe ? recipe
         .map((element, index) => (
-          <div key={ index }>
+          <div
+            key={ index }
+            className="content-done-recipes"
+          >
             {console.log(element, index)}
             <div>
               <Link to={ `/${element.type}s/${element.id}` }>
@@ -33,10 +36,11 @@ function RecipeCard({ recipe, isFavorite, handleUpdate }) {
                   src={ element.image }
                   alt={ element.name }
                   data-testid={ `${index}-horizontal-image` }
+                  className="recipe-image"
                 />
               </Link>
             </div>
-            <div>
+            <div className="buttons-favorite-page">
               <div>
                 <div
                   data-testid={ `${index}-horizontal-top-text` }
@@ -65,7 +69,7 @@ function RecipeCard({ recipe, isFavorite, handleUpdate }) {
               {index === msgIndex
                 ? <p hidden={ !msg }> Link copied! </p> : ''}
               <Link to={ `/${element.type}s/${element.id}` }>
-                <p className="title" data-testid={ `${index}-horizontal-name` }>
+                <p className="link-favorite" data-testid={ `${index}-horizontal-name` }>
                   {element.name}
                 </p>
               </Link>

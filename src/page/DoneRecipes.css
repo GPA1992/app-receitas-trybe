@@ -40,6 +40,11 @@
   width: 50%;
 }
 
+.buttons-favorite-page input {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
 .category-area-done button:hover {
   background-color: rgb(255, 168, 19, 0.5);
 }

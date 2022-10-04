@@ -35,7 +35,7 @@ export default function Header() {
             <img data-testid="profile-top-btn" src={ profileIcon } alt="profile-icon" />
           </button>
         )}
-        <h3 data-testid="page-title">{ title }</h3>
+        <h3 data-testid="page-title" className="page-title-header">{ title }</h3>
         { search && (
           <button
             data-testid="show-search-input"

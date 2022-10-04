@@ -35,9 +35,12 @@ function FavoriteRecipes() {
 
   if (!favorites || favorites.length === 0) {
     return (
-      <div>
+      <div className="favorite-page-html">
         <Header />
-        <p>Não existe nenhuma receita salva!</p>
+        <div className="favorite-page-content">
+          <p className="not-favorite">Não existe nenhuma receita salva!</p>
+        </div>
+
       </div>
     );
   }

@@ -22,8 +22,8 @@
 }
 
 .favorite-button {
-  background-color: rgba(255, 255, 255, 0.205);
-  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
   bottom: 350px;
   left: 60%;
   position: relative;
@@ -36,13 +36,11 @@
 }
 
 .share-button {
-  background-color: rgba(255, 255, 255, 0.205);
+  background-color: rgba(255, 255, 255, 0);
   border: 0;
-  border-radius: 100%;
   bottom: 350px;
   left: 62%;
   position: relative;
-
 }
 
 .link-copied {
@@ -57,11 +55,10 @@
 
 
 .button-back {
-  background-color: rgba(255, 255, 255, 0.205);
+  background-color: rgba(255, 255, 255, 0);
   border: 0;
-  border-radius: 50%;
   bottom: 350px;
-  height: 30px;
+  height: 25px;
   left: 2%;
   position: relative;
 }
@@ -101,15 +98,16 @@
   margin-top: 20px;
 }
 
-.start-recipe-btn {
+.done-recipe-btn {
   background-color: rgb(197, 160, 90);
   border: none;
   border-radius: 30px;
   bottom: 0;
-  color: white;
+
+  /* color: white; */
   margin-bottom: 15px;
+  margin-top: 10px;
   padding: 10px;
-  position: fixed;
   width: 100%;
 }
 
@@ -138,21 +136,13 @@
   width: 50%;
 }
 
-.favorite-page-html {
-  height: 100%;
-  min-height: 300px;
+.ingredients-recipe-details input {
+  margin-right: 10px;
 }
 
-.not-favorite {
-
-  /* background-color: red; */
-  margin-bottom: 70%;
-  margin-top: 30%;
-  position: relative;
-}
-
-.favorite-page-content {
-  text-align: center;
+.link-favorite {
+  color: black;
+  text-decoration: none;
 }
 
 /* .recommendation-card {
@@ -180,3 +170,4 @@
 }
 
  */
+

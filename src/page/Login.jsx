@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import context from '../contexts/ContextRecipe';
 import './Login.css';
+import voevo from '../images/logovoevo.png';
 
 export default function Login() {
   const { setTitle } = useContext(context);
@@ -45,7 +46,13 @@ export default function Login() {
       className="content-login"
     >
       <form className="form-login">
-        <h2>Recipes APP</h2>
+        <h2>
+          <img
+            src={ voevo }
+            alt="Logo Vô e Vó seu app de receitas caseiras"
+            className="logo-app-login"
+          />
+        </h2>
         <label htmlFor="email-input">
           <input
             name="email"
