@@ -49,13 +49,13 @@ function FavoriteRecipes() {
     <div>
       <Header />
       <Filters setFilters={ setFilters } />
-      {favorites ? (
+      {favorites && (
         <RecipeCard
           recipe={ favorites }
           isFavorite
           handleUpdate={ updateFav }
         />
-      ) : 'Nenhuma receita favoritada'}
+      )}
     </div>
   );
 }
