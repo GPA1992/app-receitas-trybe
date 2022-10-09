@@ -98,3 +98,21 @@ export const MOCK_IN_PROGRESS_RECIPE = {
     52771: [],
   },
 };
+
+export const MOCK_IN_PROGRESS_RECIPE_AFTER = {
+  drinks: {
+    15997: [],
+  },
+  meals: {
+    52771: ['strIngredient1'],
+  },
+};
+
+export const MOCK_IN_PROGRESS_RECIPE_FINISH = {
+  drinks: {
+    15997: [],
+  },
+  meals: {
+    52771: ['strIngredient1', 'strIngredient2', 'strIngredient3', 'strIngredient4', 'strIngredient5', 'strIngredient6', 'strIngredient7, strIngredient8'],
+  },
+};

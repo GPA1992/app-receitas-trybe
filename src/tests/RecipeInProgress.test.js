@@ -10,7 +10,7 @@ import {
 } from './utils/constantsTest';
 import {
   MOCK_FAVORITE_RECIPE_MEAL_BEFORE, MOCK_FAVORITE_RECIPE_MEAL_AFTER,
-  MOCK_IN_PROGRESS_RECIPE,
+  MOCK_IN_PROGRESS_RECIPE, MOCK_IN_PROGRESS_RECIPE_AFTER, MOCK_IN_PROGRESS_RECIPE_FINISH,
 } from './utils/utilsMocks';
 import { pushInLocalStorage, getFromLocalStorage } from '../service/localStorage';
 import fetch from '../../cypress/mocks/fetch';
@@ -51,20 +51,20 @@ describe('Testa o componente RecipeInProgress', () => {
     expect(await screen.findByTestId(FAV_BTN)).toBeInTheDocument();
   });
 
-  test('Verifica se o botão "Finishi Recipe" aparace na tela e desabilitado', async () => {
-    jest.spyOn(global, 'fetch').mockImplementation(fetch);
-    pushInLocalStorage('inProgressRecipes', MOCK_IN_PROGRESS_RECIPE);
-    RenderWithRouter(<App />, INITIAL_ENTRIES);
+  // test('Verifica se o botão "Finishi Recipe" aparace na tela e desabilitado', async () => {
+  //   jest.spyOn(global, 'fetch').mockImplementation(fetch);
+  //   pushInLocalStorage('inProgressRecipes', MOCK_IN_PROGRESS_RECIPE);
+  //   RenderWithRouter(<App />, INITIAL_ENTRIES);
 
-    const recipePhoto = await screen.findByTestId('recipe-photo');
-    expect(recipePhoto).toBeInTheDocument();
+  //   const recipePhoto = await screen.findByTestId('recipe-photo');
+  //   expect(recipePhoto).toBeInTheDocument();
 
-    const finishRecipeBtn = await screen.findByTestId('finish-recipe-btn');
+  //   const finishRecipeBtn = await screen.findByTestId('finish-recipe-btn');
 
-    expect(finishRecipeBtn).toBeInTheDocument();
+  //   expect(finishRecipeBtn).toBeInTheDocument();
 
-    expect(finishRecipeBtn).toBeDisabled();
-  });
+  //   expect(finishRecipeBtn).toBeDisabled();
+  // });
 
   test('Verifica se clicar no botão de compartilhar a url é copiado para o clipboard e aparece a mensagem "Link Copied"', async () => {
     jest.spyOn(global, 'fetch').mockImplementation(fetch);
@@ -98,5 +98,60 @@ describe('Testa o componente RecipeInProgress', () => {
     const favoriteListAfter = getFromLocalStorage(FAVORITE_KEY_LOCAL_STORAGE);
 
     expect(favoriteListAfter).toEqual(MOCK_FAVORITE_RECIPE_MEAL_AFTER);
+  });
+
+  test('Testa se ao marcar um ingrediete como feito, o progresso é salvo no local storage', async () => {
+    jest.spyOn(global, 'fetch').mockImplementation(fetch);
+
+    pushInLocalStorage('inProgressRecipes', MOCK_IN_PROGRESS_RECIPE);
+
+    RenderWithRouter(<App />, INITIAL_ENTRIES);
+
+    const firstIngredient = await screen.findByTestId('0-ingredient-step');
+    userEvent.click(firstIngredient);
+
+    const inProgressRecipes = getFromLocalStorage('inProgressRecipes');
+    expect(inProgressRecipes).toEqual(MOCK_IN_PROGRESS_RECIPE_AFTER);
+
+    userEvent.click(firstIngredient);
+
+    const inProgressRecipesAfter = getFromLocalStorage('inProgressRecipes');
+    expect(inProgressRecipesAfter).toEqual(MOCK_IN_PROGRESS_RECIPE);
+  });
+
+  test('Testa se ao marcar todos os ingredientes como feitos e ao clicar no botão de finalizar o usuário é redirecionado para a tela de receitas prontas.', async () => {
+    jest.spyOn(global, 'fetch').mockImplementation(fetch);
+
+    pushInLocalStorage('inProgressRecipes', MOCK_IN_PROGRESS_RECIPE);
+
+    const { history } = RenderWithRouter(<App />, INITIAL_ENTRIES);
+
+    const firstIngredient = await screen.findByTestId('0-ingredient-step');
+    const secondIngredient = await screen.findByTestId('1-ingredient-step');
+    const thirdIngredient = await screen.findByTestId('2-ingredient-step');
+    const fourthIngredient = await screen.findByTestId('3-ingredient-step');
+    const fifthIngredient = await screen.findByTestId('4-ingredient-step');
+    const sixthIngredient = await screen.findByTestId('5-ingredient-step');
+    const seventhIngredient = await screen.findByTestId('6-ingredient-step');
+    const eighthIngredient = await screen.findByTestId('7-ingredient-step');
+
+    const finishRecipeBtn = await screen.findByTestId('finish-recipe-btn');
+    expect(finishRecipeBtn).toBeDisabled();
+
+    userEvent.click(firstIngredient);
+    userEvent.click(secondIngredient);
+    userEvent.click(thirdIngredient);
+    userEvent.click(fourthIngredient);
+    userEvent.click(fifthIngredient);
+    userEvent.click(sixthIngredient);
+    userEvent.click(seventhIngredient);
+    userEvent.click(eighthIngredient);
+
+    expect(finishRecipeBtn).not.toBeDisabled();
+
+    userEvent.click(finishRecipeBtn);
+
+    const { pathname } = history.location;
+    expect(pathname).toBe('/done-recipes');
   });
 });
