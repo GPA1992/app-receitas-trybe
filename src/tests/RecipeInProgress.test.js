@@ -10,7 +10,7 @@ import {
 } from './utils/constantsTest';
 import {
   MOCK_FAVORITE_RECIPE_MEAL_BEFORE, MOCK_FAVORITE_RECIPE_MEAL_AFTER,
-  MOCK_IN_PROGRESS_RECIPE, MOCK_IN_PROGRESS_RECIPE_AFTER, MOCK_IN_PROGRESS_RECIPE_FINISH,
+  MOCK_IN_PROGRESS_RECIPE, MOCK_IN_PROGRESS_RECIPE_AFTER,
 } from './utils/utilsMocks';
 import { pushInLocalStorage, getFromLocalStorage } from '../service/localStorage';
 import fetch from '../../cypress/mocks/fetch';
