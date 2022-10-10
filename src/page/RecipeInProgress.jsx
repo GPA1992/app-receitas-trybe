@@ -50,6 +50,11 @@ function RecipeInProgress() {
   }, []);
 
   useEffect(() => {
+    const doneRecipesLocal = getFromLocalStorage('doneRecipes');
+    if (doneRecipesLocal === null) return pushInLocalStorage('doneRecipes', []);
+  }, []);
+
+  useEffect(() => {
     const dataProgress = getFromLocalStorage('inProgressRecipes');
     const mealsOrDrink = pathname.includes('/meals') ? 'meals' : 'drinks';
     const progressList = [...ingredientsDone];
@@ -66,7 +71,6 @@ function RecipeInProgress() {
 
   const doneButton = () => {
     const doneRecipes = getFromLocalStorage('doneRecipes');
-    if (doneRecipes === null) return pushInLocalStorage('doneRecipes', []);
     const mealsOrDrinkId = pathname.includes('/meals') ? 'idMeal' : 'idDrink';
     const mealsOrDrink = pathname.includes('/meals') ? 'Meal' : 'Drink';
     const str = 'str';
