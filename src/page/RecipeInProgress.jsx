@@ -66,7 +66,7 @@ function RecipeInProgress() {
 
   const doneButton = () => {
     const doneRecipes = getFromLocalStorage('doneRecipes');
-    if (doneRecipes === null) return pushInLocalStorage('doneRecipes', []);
+    if (doneRecipes === null) pushInLocalStorage('doneRecipes', []);
     const mealsOrDrinkId = pathname.includes('/meals') ? 'idMeal' : 'idDrink';
     const mealsOrDrink = pathname.includes('/meals') ? 'Meal' : 'Drink';
     const str = 'str';
