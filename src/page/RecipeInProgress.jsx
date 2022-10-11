@@ -43,10 +43,6 @@ function RecipeInProgress() {
     if (dataProgress[mealsOrDrink][id] !== null && ifKeys) {
       return setIgredientsDone(dataProgress[mealsOrDrink][id]);
     }
-    if (ifKeys === false) {
-      const newObj = { ...dataProgress };
-      return pushInLocalStorage('inProgressRecipes', newObj);
-    }
   }, []);
 
   useEffect(() => {
@@ -136,32 +132,27 @@ function RecipeInProgress() {
           <h4>Ingredients List</h4>
           <div className="ingredients-recipe-details">
             <ul>
-              {ingredients.map((key, index) => {
-                if (recipeDetails[key] !== null) {
-                  const measurements = recipeDetails[`strMeasure${index + 1}`];
-                  return (
-                    <li>
-                      <label
-                        className="container"
-                        htmlFor={ key }
-                        data-testid={ `${index}-ingredient-step` }
-                      >
-                        <input
-                          checked={ ingredientsDone.some((e) => e === key) }
-                          onChange={ ingredientsSetDone }
-                          id={ key }
-                          name={ key }
-                          type="checkbox"
-                          className="checkmark"
-                        />
-                        {recipeDetails[key]}
-                        {measurements !== null && ` - ${measurements}`}
-                      </label>
-                    </li>
-                  );
-                }
-                return null;
-              })}
+              {ingredients.map((key, index) => (
+                <li key={ index }>
+                  <label
+                    className="container"
+                    htmlFor={ key }
+                    data-testid={ `${index}-ingredient-step` }
+                  >
+                    <input
+                      checked={ ingredientsDone.some((e) => e === key) }
+                      onChange={ ingredientsSetDone }
+                      id={ key }
+                      name={ key }
+                      type="checkbox"
+                      className="checkmark"
+                    />
+                    {recipeDetails[key]}
+                    {recipeDetails[`strMeasure${index + 1}`] !== null
+                          && ` - ${recipeDetails[`strMeasure${index + 1}`]}`}
+                  </label>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
