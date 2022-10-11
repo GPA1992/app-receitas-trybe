@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import fetchMeals from '../service/fetchMeals';
 import fetchDrinks from '../service/fetchDrinks';
 import { pushInLocalStorage, getFromLocalStorage } from '../service/localStorage';
@@ -26,7 +27,6 @@ function RecipeInProgress() {
       }
     };
     fetchApi();
-    console.log('depois tira');
   }, []);
 
   useEffect(() => {
@@ -43,31 +43,30 @@ function RecipeInProgress() {
     if (dataProgress[mealsOrDrink][id] !== null && ifKeys) {
       return setIgredientsDone(dataProgress[mealsOrDrink][id]);
     }
-    if (ifKeys === false) {
-      const newObj = { ...dataProgress };
-      return pushInLocalStorage('inProgressRecipes', newObj);
-    }
+  }, []);
+
+  useEffect(() => {
+    const doneRecipesLocal = getFromLocalStorage('doneRecipes');
+    if (doneRecipesLocal === null) return pushInLocalStorage('doneRecipes', []);
   }, []);
 
   useEffect(() => {
     const dataProgress = getFromLocalStorage('inProgressRecipes');
     const mealsOrDrink = pathname.includes('/meals') ? 'meals' : 'drinks';
     const progressList = [...ingredientsDone];
-    if (progressList.length > 0) {
-      const newDataProgress = {
-        ...dataProgress,
-        [mealsOrDrink]: {
-          ...dataProgress[mealsOrDrink],
-          [id]: progressList,
-        },
-      };
-      pushInLocalStorage('inProgressRecipes', newDataProgress);
-    }
+
+    const newDataProgress = {
+      ...dataProgress,
+      [mealsOrDrink]: {
+        ...dataProgress[mealsOrDrink],
+        [id]: progressList,
+      },
+    };
+    pushInLocalStorage('inProgressRecipes', newDataProgress);
   }, [ingredientsDone]);
-  console.log(recipeDetails);
+
   const doneButton = () => {
     const doneRecipes = getFromLocalStorage('doneRecipes');
-    if (doneRecipes === null) return pushInLocalStorage('doneRecipes', []);
     const mealsOrDrinkId = pathname.includes('/meals') ? 'idMeal' : 'idDrink';
     const mealsOrDrink = pathname.includes('/meals') ? 'Meal' : 'Drink';
     const str = 'str';
@@ -87,7 +86,6 @@ function RecipeInProgress() {
         tags: tag,
       },
     ];
-    console.log(recipeDoneDetails);
     pushInLocalStorage('doneRecipes', recipeDoneDetails);
     return history.push('/done-recipes');
   };
@@ -102,12 +100,11 @@ function RecipeInProgress() {
 
   const ingredientsSetDone = ({ target }) => {
     if (target.checked) {
-      setIgredientsDone([...ingredientsDone, target.name]);
-      return true;
+      return setIgredientsDone([...ingredientsDone, target.name]);
     }
-    setIgredientsDone(ingredientsDone.filter((ingredient) => (
+
+    return setIgredientsDone(ingredientsDone.filter((ingredient) => (
       ingredient !== target.name)));
-    return false;
   };
 
   return (
@@ -135,31 +132,27 @@ function RecipeInProgress() {
           <h4>Ingredients List</h4>
           <div className="ingredients-recipe-details">
             <ul>
-              {ingredients.map((key, index) => {
-                if (recipeDetails[key] !== null) {
-                  const measurements = recipeDetails[`strMeasure${index + 1}`];
-                  return (
-                    <li>
-                      <label
-                        className="container"
-                        htmlFor={ key }
-                        data-testid={ `${index}-ingredient-step` }
-                      >
-                        <input
-                          checked={ ingredientsDone.some((e) => e === key) }
-                          onChange={ ingredientsSetDone }
-                          name={ key }
-                          type="checkbox"
-                          className="checkmark"
-                        />
-                        {recipeDetails[key]}
-                        {measurements !== null && ` - ${measurements}`}
-                      </label>
-                    </li>
-                  );
-                }
-                return null;
-              })}
+              {ingredients.map((key, index) => (
+                <li key={ index }>
+                  <label
+                    className="container"
+                    htmlFor={ key }
+                    data-testid={ `${index}-ingredient-step` }
+                  >
+                    <input
+                      checked={ ingredientsDone.some((e) => e === key) }
+                      onChange={ ingredientsSetDone }
+                      id={ key }
+                      name={ key }
+                      type="checkbox"
+                      className="checkmark"
+                    />
+                    {recipeDetails[key]}
+                    {recipeDetails[`strMeasure${index + 1}`] !== null
+                          && ` - ${recipeDetails[`strMeasure${index + 1}`]}`}
+                  </label>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

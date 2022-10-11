@@ -9,14 +9,14 @@ const favoriteButtonHelper = (isFavoritePage, path, details) => {
       type: details.type,
       category: details.category,
     };
-  } if (path.includes('comidas')) {
+  } if (path.includes('meals')) {
     return {
       id: details.idMeal,
       name: details.strMeal,
       image: details.strMealThumb,
       alcoholicOrNot: '',
       area: details.strArea,
-      type: 'comida',
+      type: 'meal',
       category: details.strCategory,
     };
   }
@@ -26,7 +26,7 @@ const favoriteButtonHelper = (isFavoritePage, path, details) => {
     image: details.strDrinkThumb,
     alcoholicOrNot: details.strAlcoholic,
     area: '',
-    type: 'bebida',
+    type: 'drink',
     category: details.strCategory,
   };
 };
