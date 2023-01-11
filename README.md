@@ -9,7 +9,9 @@ O projeto Recipes App é um aplicativo de receitas que permite ao usuário acess
 
 ## Objetivo
 
-Esse projeto foi desenvolvido em grupo com o objetivo de praticar metodologias ágeis e foi construído usando as seguintes tecnologias:
+Esse projeto foi desenvolvido em grupo com o objetivo de praticar metodologias ágeis.
+
+## Tecnologias utilizadas
 - React
 - Context API
 - Hooks
